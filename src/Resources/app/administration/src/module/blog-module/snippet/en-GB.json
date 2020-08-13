@@ -1,4 +1,4 @@
-{
+    {
     "sas-blog": {
         "general": {
             "mainMenuItemGeneral": "Blog",
@@ -15,10 +15,15 @@
         "detail": {
             "saveBlogEntry": "Save entry",
             "activeLable": "Entry active",
-            "contentLable": "Markdown content",
+            "contentLable": " content",
             "slugLable": "Slug",
             "titleLable": "Title",
-            "mediaLable": "Teaser Image"
+            "titleError" : "you have an error",
+            "cancelButtonText" : "cancel",
+            "saveButtonText": "save",
+            "main" : "Blog",
+            "situationActive" : "Situation Active",
+            "content" : "content"
         }
     }
 }

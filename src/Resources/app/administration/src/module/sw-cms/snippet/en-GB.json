@@ -1,0 +1,26 @@
+{
+  "sw-cms": {
+    "blocks": {
+      "blog-module": {
+        "label": "Blog"
+      }
+    },
+
+    "elements": {
+      "blog-module": {
+        "label": "Blog Module",
+        "more": "More...",
+        "labelForm": "Blog Bilden",
+
+
+        "config": {
+          "sortorder": {
+            "title": "Sort order",
+            "desc": "Latest posts first",
+            "asc": "Oldest posts first"
+          }
+        }
+      }
+    }
+  }
+}

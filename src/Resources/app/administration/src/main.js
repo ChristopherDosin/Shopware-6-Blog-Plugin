@@ -1,2 +1,3 @@
 import './module/blog-module';
-import './module/blog-module/elements/blog';
+import "./module/sw-cms/blocks/cms-blog-module"
+import './module/sw-cms/elements/el-blog-module';

@@ -1,0 +1,47 @@
+{% block sas_blog_detail %}
+<sw-page class="sas-blog-detail">
+    <template slot="smart-bar-actions">
+        <sw-button :routerLink="{ name: 'blog.module.index' }">
+            {{ $t('sas-blog.detail.cancelButtonText') }}
+        </sw-button>
+
+        <sw-button-process
+            :isLoading="isLoading"
+            :processSuccess="processSuccess"
+            variant="primary"
+            @process-finish="saveFinish"
+            @click="onClickSave">
+            {{ $t('sas-blog.detail.saveButtonText') }}
+        </sw-button-process>
+    </template>
+
+    <template slot="content">
+        <sw-card-view>
+            <sw-card v-if="blog" :isLoading="isLoading" :title="$t('sas-blog.detail.main')">
+                <sw-container columns="1fr 1fr" gap="0px 30px">
+                    <sw-card-section divider="right">
+                        <sw-field :label="$t('sas-blog.detail.main')" v-model="blog.title"
+                                  required validation="required" :error="blogTitleError"
+                                  @change="updateSlug(blog.title)"></sw-field>
+                        <sw-language-info :entityDescription="blog.title"></sw-language-info>
+
+                        <sw-switch-field :label="$t('sas-blog.detail.situationActive')" v-model="blog.active"></sw-switch-field>
+                    </sw-card-section>
+                    <sw-card-section>
+                        <sw-field :label="$t('sas-blog.detail.slugLable')"  v-model="blog.slug"
+                                  required validation="required" :error="blogSlugError"></sw-field>
+                    </sw-card-section>
+                </sw-container>
+            </sw-card>
+
+            <sw-card v-if="blog" :isLoading="isLoading" :title="$t('sas-blog.detail.content')" >
+                <sw-text-editor :label="$t('sas-blog.detail.contentLable')" v-model="blog.content"></sw-text-editor>
+            </sw-card>
+
+
+
+        </sw-card-view>
+    </template>
+
+</sw-page>
+{% endblock %}

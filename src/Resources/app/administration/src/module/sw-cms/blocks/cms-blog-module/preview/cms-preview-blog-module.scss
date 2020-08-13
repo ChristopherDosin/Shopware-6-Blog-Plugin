@@ -1,0 +1,19 @@
+.sw-cms-preview-ak_blog {
+  display: flex;
+
+  .left {
+    flex-grow: 2;
+    margin-top: 5px;
+    margin-left: 5px;
+  }
+
+  .right {
+    flex-grow: 1;
+  }
+
+  .text-muted {
+    color: #aaa;
+  }
+
+  clear: both;
+}

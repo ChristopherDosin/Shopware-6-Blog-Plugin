@@ -1,0 +1,19 @@
+.cms-block-blog-module {
+    .list {
+        display: flex;
+        flex-wrap: nowrap;
+        width: 100%;
+        margin-bottom: .5rem;
+
+        .left {
+            padding: .25rem;
+        }
+
+        .right {
+            margin-left: auto;
+            img {
+                max-height: 6rem;
+            }
+        }
+    }
+}

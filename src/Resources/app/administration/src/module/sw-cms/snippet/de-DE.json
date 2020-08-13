@@ -1,0 +1,28 @@
+{
+  "sw-cms": {
+    "blocks": {
+      "blog-module": {
+        "label": "Blog",
+        "labelForm": "Module Bilden"
+      }
+    },
+
+    "elements": {
+      "blog-module": {
+        "label": "Blog",
+        "more": "Mehr...",
+        "labelForm": "Module Bilden",
+
+
+        "config": {
+          "layout": {
+            "title": "Layout (Blog-Übersicht)",
+            "cards": "Kartenansicht",
+            "list": "Listenansicht"
+          }
+        }
+      }
+    }
+  }
+}
+

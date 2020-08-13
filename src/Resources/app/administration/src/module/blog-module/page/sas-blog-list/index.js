@@ -38,7 +38,7 @@ Component.register('sas-blog-list', {
                 },
                 {
                     property: 'active',
-                    label: this.$tc('sw-product.list.columnActive'),
+                    label: this.$tc('sas-blog.detail.activeLable'),
                     inlineEdit: 'boolean',
                     allowResize: true,
                     align: 'center'
@@ -52,8 +52,6 @@ Component.register('sas-blog-list', {
         this.repository = this.repositoryFactory.create('sas_blog_entries');
 
         this.repository.search(new Criteria(), Shopware.Context.api).then(result => {
-            console.log(this.context);
-            console.log(result);
             this.total = result.total;
             this.blogEntries = result;
             this.isLoading = false;

@@ -1,0 +1,18 @@
+{% block cms_element_blog_module_config %}
+    <div class="cms-el-config-blog-module">
+        <sw-container columns="1fr 1fr 1fr" gap="20px">
+
+            <sw-select-field :label="$tc('sw-cms.elements.blog-module.config.sortorder.title')"
+                             v-model="element.config.sortOrder.value">
+                <option value="asc">{{ $tc('sw-cms.elements.blog-module.config.sortorder.asc') }}</option>
+                <option value="desc">{{ $tc('sw-cms.elements.blog-module.config.sortorder.desc') }}</option>
+            </sw-select-field>
+            <sw-select-field :label="$tc('sw-cms.elements.blog-module.config.layout.title')"
+                             v-model="element.config.layout.value">
+                <option value="cards">{{ $tc('sw-cms.elements.blog-module.config.layout.cards') }}</option>
+                <option value="list">{{ $tc('sw-cms.elements.blog-module.config.layout.list') }}</option>
+            </sw-select-field>
+
+        </sw-container>
+    </div>
+{% endblock %}

@@ -45,5 +45,5 @@ Module.register('blog-module', {
             path: 'blog.module.index',
             icon: 'default-object-lab-flask'
         }
-    ]
+        ]
 });
