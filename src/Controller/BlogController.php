@@ -58,7 +58,7 @@ class BlogController extends StorefrontController
 
         $entries = (array) $results->getEntities()->getElements();
 
-        return $this->renderStorefront('@Storefront/page/blog/index.html.twig', [
+        return $this->renderStorefront('@BlogModule/storefront/page/blog/index.html.twig', [
             'page'    => $page,
             'entries' => $entries,
         ]);
@@ -66,8 +66,8 @@ class BlogController extends StorefrontController
 
     /**
      * @RouteScope(scopes={"storefront"})
-     * @Route("/blog/{slug}", name="sas.frontend.blog.detail", methods={"GET"})
-     * @param  mixed                 $slug
+     * @Route("/blogDetails/{slug}", name="sas.frontend.blog.detail", methods={"GET"})
+     * @param  mixed $slug
      * @throws PageNotFoundException
      */
     public function detailAction(Request $request, SalesChannelContext $salesChannelContext, Context $criteriaContext, $slug): Response
@@ -86,7 +86,7 @@ class BlogController extends StorefrontController
         $results = $blogRepository->search($criteria, $criteriaContext)->getEntities();
         $entry = $results->first();
 
-        return $this->renderStorefront('@BlogModule/storefront/page/blog/index.html.twig', [
+        return $this->renderStorefront('@Storefront/storefront/page/blog/detail.html.twig', [
             'page'  => $page,
             'entry' => $entry,
         ]);
