@@ -40,6 +40,12 @@
                 "warningMessage": "Write your warning message ...",
                 "quotePlaceholder": "Tell me about your quote ...",
                 "quoteCaption": "... the caption"
+            },
+            "notification": {
+                "save-success": {
+                    "title": "Success!",
+                    "text": "Your blog entry has been saved."
+                }
             }
         },
         "elements": {

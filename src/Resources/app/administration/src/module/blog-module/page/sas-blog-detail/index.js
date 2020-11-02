@@ -192,7 +192,12 @@ Component.register('sas-blog-detail', {
                 .save(this.blog, Shopware.Context.api)
                 .then(() => {
                     this.isLoading = false;
-                    this.$router.push({ name: 'blog.module.index' });
+                    this.$router.push({ name: 'blog.module.detail', params: {id: this.blog.id} });
+
+                    this.createNotificationSuccess({
+                        title: this.$tc('sas-blog.detail.notification.save-success.title'),
+                        message: this.$tc('sas-blog.detail.notification.save-success.text')
+                    });
                 })
                 .catch(exception => {
                     this.isLoading = false;

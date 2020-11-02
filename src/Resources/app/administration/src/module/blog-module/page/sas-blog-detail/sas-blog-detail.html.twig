@@ -16,7 +16,7 @@
                     </sw-button>
                 {% endblock %}
                 {% block sas_blog_list_smart_bar_actions_add %}
-                    <sw-button variant="primary" @click="onClickSave()">
+                    <sw-button variant="primary" @click="onClickSave()" :isLoading="isLoading">
                         {{ $tc('sas-blog.detail.saveBlogEntry') }}
                     </sw-button>
                 {% endblock %}
