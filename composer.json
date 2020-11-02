@@ -1,10 +1,10 @@
 {
     "name": "sas/blog-module",
     "description": "Blog Module",
-    "version": "v1.1.0",
+    "version": "v1.1.1",
     "type": "shopware-platform-plugin",
     "keywords": ["blog", "news"],
-    "license":"proprietary",
+    "license":"MIT",
     "authors":[
         {
             "name":"Christopher Dosin",
