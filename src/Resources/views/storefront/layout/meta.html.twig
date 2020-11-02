@@ -1,20 +1,24 @@
 {% sw_extends '@Storefront/storefront/layout/meta.html.twig' %}
 
 {% block layout_head_meta_tags %}
-    {% set metaTitle = entry.translated.metaTitle|striptags|trim %}
+    {% if activeRoute == 'sas.frontend.blog.detail' %}
+        {% set metaTitle = entry.translated.metaTitle|striptags|trim %}
+    {% endif %}
     {{ parent() }}
 {% endblock %}
 
-{% block layout_head_meta_tags_description %}{% if entry.translated.metaDescription %}{{ entry.translated.metaDescription|striptags|trim }}{% else %}{{ entry.translated.teaser }}{% endif %}{% endblock %}
+{% block layout_head_meta_tags_description %}{% if activeRoute == 'sas.frontend.blog.detail' %}{% if entry.translated.metaDescription %}{{ entry.translated.metaDescription|striptags|trim }}{% else %}{{ entry.translated.teaser }}{% endif %}{% else %}{{ parent() }}{% endif %}{% endblock %}
 
 {% block layout_head_title %}
-    {% set metaTitle = entry.translated.metaTitle|striptags|trim %}
+    {% if activeRoute == 'sas.frontend.blog.detail' %}
+        {% set metaTitle = entry.translated.metaTitle|striptags|trim %}
+    {% endif %}
     {{ parent() }}
 {% endblock %}
 
 {% block layout_head_meta_tags_schema_webpage %}
     {{ parent() }}
-    {% if page.cmsPage.id == shopware.config.BlogModule.config.cmsBlogDetailPage %}
+    {% if activeRoute == 'sas.frontend.blog.detail' %}
         <script type="application/ld+json">
             {
                 "@context": "https://schema.org",
