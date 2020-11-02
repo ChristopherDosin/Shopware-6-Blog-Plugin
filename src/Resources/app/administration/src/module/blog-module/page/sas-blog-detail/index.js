@@ -152,7 +152,6 @@ Component.register('sas-blog-detail', {
                     },
                     image: SimpleImage,
                     delimiter: Delimiter,
-                    raw: RawTool,
                     table: {
                         class: Table,
                         inlineToolbar: true,
