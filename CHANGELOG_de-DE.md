@@ -1,3 +1,6 @@
+# 1.1.3
+* changed `SalesChannelCmsPageLoader` to `SalesChannelCmsPageLoaderInterface` in `BlogController`
+
 # 1.1.2
 * fixed Blog Plugin kills all meta-Infos from all other pages #20
 * fixed Stay on blogpost when saving #14

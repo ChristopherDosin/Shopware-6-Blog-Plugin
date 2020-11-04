@@ -2,7 +2,7 @@
 namespace Sas\BlogModule\Controller;
 
 use Shopware\Core\Content\Cms\Exception\PageNotFoundException;
-use Shopware\Core\Content\Cms\SalesChannel\SalesChannelCmsPageLoader;
+use Shopware\Core\Content\Cms\SalesChannel\SalesChannelCmsPageLoaderInterface;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityRepositoryInterface;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use Shopware\Core\Framework\Routing\Annotation\RouteScope;
@@ -26,7 +26,7 @@ class BlogController extends StorefrontController
      */
     private $genericPageLoader;
     /**
-     * @var SalesChannelCmsPageLoader
+     * @var SalesChannelCmsPageLoaderInterface
      */
     private $cmsPageLoader;
 
@@ -35,7 +35,7 @@ class BlogController extends StorefrontController
      */
     private $systemConfigService;
 
-    public function __construct(SystemConfigService $systemConfigService, GenericPageLoader $genericPageLoader, SalesChannelCmsPageLoader $cmsPageLoader)
+    public function __construct(SystemConfigService $systemConfigService, GenericPageLoader $genericPageLoader, SalesChannelCmsPageLoaderInterface $cmsPageLoader)
     {
         $this->systemConfigService = $systemConfigService;
         $this->genericPageLoader = $genericPageLoader;
