@@ -16,7 +16,7 @@ jobs:
             -   name: Checkout
                 uses: actions/checkout@v2.3.1
                 with:
-                    path: SwagTestPlugin
+                    path: SasBlog
 
             -   name: Build & create zip
                 run: |
