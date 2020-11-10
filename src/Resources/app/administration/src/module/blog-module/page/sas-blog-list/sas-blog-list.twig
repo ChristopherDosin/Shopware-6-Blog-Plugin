@@ -25,6 +25,16 @@
             </template>
         {% endblock %}
 
+        <template #side-content>
+            {% block sw_category_side_content %}
+            <sas-blog-category-tree
+                :categoryId="categoryId"
+                :currentLanguageId="currentLanguageId"
+                @change-category-id="changeCategoryId"
+            ></sas-blog-category-tree>
+            {% endblock %}
+        </template>
+
         <template slot="content">
             {% block sas_blog_list_content %}
                 <sw-entity-listing

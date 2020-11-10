@@ -18,6 +18,18 @@
             <tag name="shopware.entity.definition"/>
         </service>
 
+        <service id="Sas\BlogModule\Content\BlogCategory\BlogCategoryDefinition">
+            <tag name="shopware.entity.definition"/>
+        </service>
+
+        <service id="Sas\BlogModule\Content\BlogCategory\BlogCategoryTranslation\BlogCategoryTranslationDefinition">
+            <tag name="shopware.entity.definition"/>
+        </service>
+
+        <service id="Sas\BlogModule\Content\Blog\Aggregate\BlogCategoryMappingDefinition">
+            <tag name="shopware.entity.definition"/>
+        </service>
+
         <service id="Sas\BlogModule\Resources\snippet\en_GB\SnippetFile_en_GB" public="true">
             <tag name="shopware.snippet.file"/>
         </service>
@@ -48,6 +60,15 @@
         <service id="Sas\BlogModule\Content\Blog\BlogSeoUrlListener">
             <argument type="service" id="Shopware\Core\Content\Seo\SeoUrlUpdater"/>
             <tag name="kernel.event_subscriber"/>
+        </service>
+
+        <service id="Sas\BlogModule\Content\BlogCategory\BlogCategoryIndexer">
+            <argument type="service" id="Doctrine\DBAL\Connection"/>
+            <argument type="service" id="Shopware\Core\Framework\DataAbstractionLayer\Dbal\Common\IteratorFactory"/>
+            <argument type="service" id="sas_blog_category.repository"/>
+            <argument type="service" id="Shopware\Core\Framework\DataAbstractionLayer\Indexing\ChildCountUpdater"/>
+            <argument type="service" id="Shopware\Core\Framework\DataAbstractionLayer\Indexing\TreeUpdater"/>
+            <tag name="shopware.entity_indexer"/>
         </service>
     </services>
 </container>

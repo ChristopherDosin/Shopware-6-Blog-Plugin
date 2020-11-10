@@ -1,0 +1,56 @@
+{% block sw_category_tree %}
+    <div class="sw-category-tree">
+        <sas-blog-tree class="sw-category-tree__inner"
+                 v-if="!isLoadingInitialData"
+                 after-id-property="afterCategoryId"
+                 :items="categories"
+                 :sortable="allowEdit"
+                 :searchable="false"
+                 :activeTreeItemId="categoryId"
+                 :translationContext="translationContext"
+                 :onChangeRoute="changeCategory"
+                 :disableContextMenu="disableContextMenu"
+                 :allowDeleteCategories="allowDelete"
+                 @batch-delete="deleteCheckedItems"
+                 @delete-element="onDeleteCategory"
+                 @drag-end="onUpdatePositions"
+                 @get-tree-items="onGetTreeItems"
+                 @finish-edit-item="onFinishEditCategory"
+                 @editing-end="syncSiblings">
+
+            {% block sw_category_tree_items %}
+                <template
+                    #items="{
+                        treeItems,
+                        sortable,
+                        draggedItem,
+                        newElementId,
+                        checkItem,
+                        translationContext,
+                        onChangeRoute,
+                        disableContextMenu
+                    }">
+                    <sas-blog-tree-item
+                        v-for="item in treeItems"
+                        :key="item.id"
+                        :item="item"
+                        :allowNewCategories="allowCreate"
+                        :allowDeleteCategories="allowDelete"
+                        :active="item.active"
+                        :translationContext="translationContext"
+                        :onChangeRoute="onChangeRoute"
+                        :sortable="sortable"
+                        :draggedItem="draggedItem"
+                        :disableContextMenu="disableContextMenu"
+                        :displayCheckbox="allowEdit"
+                        :contextMenuTooltipText="contextMenuTooltipText"
+                        :newElementId="newElementId"
+                        @check-item="checkItem">
+                    </sas-blog-tree-item>
+                </template>
+            {% endblock %}
+        </sas-blog-tree>
+
+        <sw-loader v-else></sw-loader>
+    </div>
+{% endblock %}

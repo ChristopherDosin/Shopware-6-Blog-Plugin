@@ -113,6 +113,20 @@
                     </sw-card>
 
                     <sw-card style="margin-top: 20px;">
+                        <h3 style="margin-bottom: 5px;">Categories</h3>
+                        <sas-blog-category-tree-field
+                            required
+                            v-model="blog.blogCategories"
+                            :categoriesCollection="blog.blogCategories"
+                            class="sw-product-detail__select-category"
+                            :placeholder="$tc('sw-product.categoryForm.placeholderCategory')">
+                        </sas-blog-category-tree-field>
+                        <!--
+                        <p style="color: #189eff">Add a specific release date.</p>
+                        -->
+                    </sw-card>
+
+                    <sw-card style="margin-top: 20px;">
                         <h3 style="margin-bottom: 5px;">SERP Preview</h3>
                         <div class="serp-preview">
                             <h3>{{ blog.metaTitle }}</h3>

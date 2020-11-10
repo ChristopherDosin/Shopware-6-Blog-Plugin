@@ -45,6 +45,9 @@
                 "save-success": {
                     "title": "Success!",
                     "text": "Your blog entry has been saved."
+                },
+                "error": {
+                    "missingCategory": "Please choose at least one blog category!"
                 }
             }
         },
@@ -82,6 +85,35 @@
     "sw-seo-url-template-card": {
         "routeNames": {
             "sas-frontend-blog-detail": "Blog Detail Page"
+        }
+    },
+
+    "sas-blog-category": {
+        "general": {
+            "treeHeadline": "Blog categories",
+            "mainMenuItemIndex": "Categories",
+            "mainMenuItemList": "Overview",
+            "descriptionTextModule": "Manage categories here.",
+            "headlineCategories": "Categories",
+            "placeholderSearchBar": "Search categories...",
+            "buttonCreate": "Create category",
+            "buttonSafeCategory": "Save",
+            "descriptionLabel": "Description",
+            "messageSaveSuccess": "Category \"{name}\" has been saved.",
+            "useAsLogo": "Use as display image",
+            "treeHeadSelected": "{count} selected",
+            "emptyStateHeadline": "No category selected",
+            "actions": {
+                "actionsDisabledInLanguage": "Categories can only be created in the default language.",
+                "createSub": "New subcategory",
+                "createBefore": "New category before",
+                "createAfter": "New category after"
+            }
+        }
+    },
+    "sas-blog-tree-item": {
+        "actions": {
+            "edit": "Edit"
         }
     }
 }

@@ -11,9 +11,11 @@ Component.register('sas-blog-list', {
 
     data() {
         return {
+            categoryId: null,
             blogEntries: null,
             total: 0,
-            isLoading: true
+            isLoading: true,
+            currentLanguageId: Shopware.Context.api.languageId,
         };
     },
 
@@ -30,6 +32,10 @@ Component.register('sas-blog-list', {
     computed: {
         blogEntriesRepository() {
             return this.repositoryFactory.create('sas_blog_entries');
+        },
+
+        blogCategoryRepository() {
+            return this.repositoryFactory.create('sas_blog_category');
         },
 
         columns() {
@@ -50,14 +56,27 @@ Component.register('sas-blog-list', {
     },
 
     methods: {
-        changeLanguage() {
+        changeLanguage(newLanguageId) {
+            this.currentLanguageId = newLanguageId;
             this.getList();
+        },
+
+        changeCategoryId(categoryId) {
+            if (categoryId && categoryId !== this.categoryId) {
+                this.categoryId = categoryId;
+                this.getList();
+            }
         },
 
         getList() {
             this.isLoading = true;
+            const criteria = new Criteria();
+            criteria.addAssociation('blogCategories');
 
-            return this.blogEntriesRepository.search(new Criteria(), Shopware.Context.api).then((result) => {
+            if (this.categoryId) {
+                criteria.addFilter(Criteria.equals('blogCategories.id', this.categoryId));
+            }
+            return this.blogEntriesRepository.search(criteria, Shopware.Context.api).then((result) => {
                 this.total = result.total;
                 this.blogEntries = result;
                 this.isLoading = false;

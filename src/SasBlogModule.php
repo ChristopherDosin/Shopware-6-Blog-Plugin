@@ -57,6 +57,9 @@ class SasBlogModule extends Plugin
         $connection->executeQuery('SET FOREIGN_KEY_CHECKS=0;');
         $connection->executeQuery('DROP TABLE IF EXISTS `sas_blog_entries`');
         $connection->executeQuery('DROP TABLE IF EXISTS `sas_blog_entries_translation`');
+        $connection->executeQuery('DROP TABLE IF EXISTS `sas_blog_blog_category`');
+        $connection->executeQuery('DROP TABLE IF EXISTS `sas_blog_category_translation`');
+        $connection->executeQuery('DROP TABLE IF EXISTS `sas_blog_category`');
         $connection->executeQuery('SET FOREIGN_KEY_CHECKS=1;');
     }
 

@@ -1,5 +1,6 @@
 import { Component, Mixin } from 'src/core/shopware';
 import template from './sas-blog-detail.html.twig';
+import Criteria from 'src/core/data-new/criteria.data';
 import './sas-blog-detail.scss';
 
 import slugify from 'slugify';
@@ -83,8 +84,11 @@ Component.register('sas-blog-detail', {
 
     methods: {
         getBlog() {
+            const criteria = new Criteria();
+            criteria.addAssociation('blogCategories');
+
             this.repository
-                .get(this.$route.params.id, Shopware.Context.api)
+                .get(this.$route.params.id, Shopware.Context.api, criteria)
                 .then((entity) => {
                     this.blog = entity;
                     this.isLoading = false;
@@ -187,6 +191,14 @@ Component.register('sas-blog-detail', {
         },
 
         onClickSave() {
+            if (!this.blog.blogCategories || this.blog.blogCategories.length === 0) {
+                this.createNotificationError({
+                    message: this.$tc('sas-blog.detail.notification.error.missingCategory')
+                });
+
+                return;
+            }
+
             this.isLoading = true;
 
             this.repository

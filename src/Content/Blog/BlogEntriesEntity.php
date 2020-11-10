@@ -4,6 +4,7 @@ namespace Sas\BlogModule\Content\Blog;
 use Sas\BlogModule\Content\Blog\BlogTranslation\BlogTranslationCollection;
 use Shopware\Core\Framework\DataAbstractionLayer\Entity;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityIdTrait;
+use Shopware\Core\Framework\Struct\Collection;
 
 class BlogEntriesEntity extends Entity
 {
@@ -19,6 +20,11 @@ class BlogEntriesEntity extends Entity
      * @var BlogTranslationCollection|null
      */
     protected $translations;
+
+    /**
+     * @var Collection|null
+     */
+    protected $blogCategories;
 
     /**
      * @return int
@@ -50,5 +56,15 @@ class BlogEntriesEntity extends Entity
     public function setTranslations(?BlogTranslationCollection $translations): void
     {
         $this->translations = $translations;
+    }
+
+    public function getBlogCategories(): ?Collection
+    {
+        return $this->blogCategories;
+    }
+
+    public function setBlogCategories(Collection $blogCategories): void
+    {
+        $this->blogCategories = $blogCategories;
     }
 }
