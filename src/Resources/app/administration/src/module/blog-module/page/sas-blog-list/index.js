@@ -1,4 +1,4 @@
-import { Component } from 'src/core/shopware';
+import { Component, Mixin } from 'src/core/shopware';
 import template from './sas-blog-list.twig';
 import Criteria from 'src/core/data-new/criteria.data';
 
@@ -9,13 +9,18 @@ Component.register('sas-blog-list', {
 
     inject: ['repositoryFactory'],
 
+    mixins: [
+        Mixin.getByName('salutation'),
+        Mixin.getByName('listing')
+    ],
+
     data() {
         return {
             categoryId: null,
             blogEntries: null,
             total: 0,
             isLoading: true,
-            currentLanguageId: Shopware.Context.api.languageId,
+            currentLanguageId: Shopware.Context.api.languageId
         };
     },
 
@@ -45,11 +50,18 @@ Component.register('sas-blog-list', {
                     dataIndex: 'title',
                     label: this.$tc('sas-blog.list.table.title'),
                     routerLink: 'blog.module.detail',
-                    primary: true
+                    primary: true,
+                    inlineEdit: 'string'
+                },
+                {
+                    property: 'author',
+                    label: this.$tc('sas-blog.list.table.author'),
+                    inlineEdit: false,
                 },
                 {
                     property: 'active',
-                    label: this.$tc('sas-blog.list.table.active')
+                    label: this.$tc('sas-blog.list.table.active'),
+                    inlineEdit: 'boolean'
                 }
             ];
         }
@@ -71,6 +83,7 @@ Component.register('sas-blog-list', {
         getList() {
             this.isLoading = true;
             const criteria = new Criteria();
+            criteria.addAssociation('author');
             criteria.addAssociation('blogCategories');
 
             if (this.categoryId) {

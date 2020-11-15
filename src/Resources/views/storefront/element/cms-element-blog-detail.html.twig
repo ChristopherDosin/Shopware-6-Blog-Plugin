@@ -19,6 +19,21 @@
                 <h1 class="sas-blog-detail-title" itemprop="headline">
                     {{ element.data.translated.title }}
                 </h1>
+
+                <div class="sas-blog-detail-article-meta">
+                    {% if element.data.author %}
+                        {% sw_include '@Storefront/storefront/component/blog/_partials/_block_author.html.twig' with {
+                            author: element.data.author
+                        } %}
+                    {% endif %}
+
+                    {% if element.data.blogCategories %}
+                        {% sw_include '@Storefront/storefront/component/blog/_partials/_block_category.html.twig' with {
+                            categories: element.data.blogCategories
+                        } %}
+                    {% endif %}
+                </div>
+
                 {% for block in element.data.translated.content.blocks %}
                     {% sw_include('@Storefront/storefront/component/blog/_partials/_block_' ~ block.type) ~ '.html.twig' %}
                 {% endfor %}

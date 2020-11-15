@@ -1,0 +1,25 @@
+<sw-tabs isVertical :defaultItem="defaultItem" :small="false" class="sw-blog__tabs" @new-item-active="onChangeTab" >
+    <template #default="{ active }">
+        {% block sas_block_list_tab_item %}
+        <sw-tabs-item :title="$tc('sas-blog.general.mainMenuItemList')"
+                      variant="minimal"
+                      :route="{ name: 'blog.module.index' }"
+                      :activeTab="active"
+                      :native="true"
+                      name="blog">
+            {{ $tc('sas-blog.general.mainMenuItemList') }}
+        </sw-tabs-item>
+        {% endblock %}
+
+        {% block sas_block_tags_tab_item %}
+        <sw-tabs-item :title="$tc('sas-blog-author.general.mainMenuItemList')"
+                      :route="{ name: 'blog.module.author' }"
+                      variant="minimal"
+                      :activeTab="active"
+                      :native="true"
+                      name="author">
+            {{ $tc('sas-blog-author.general.mainMenuItemList') }}
+        </sw-tabs-item>
+        {% endblock %}
+    </template>
+</sw-tabs>

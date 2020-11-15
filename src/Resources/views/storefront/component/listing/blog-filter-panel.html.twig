@@ -1,0 +1,33 @@
+{% sw_extends '@Storefront/storefront/component/listing/filter-panel.html.twig' %}
+
+{% block component_filter_panel_items_container %}
+    <div class="filter-panel-items-container">
+        {% block component_filter_panel_item_category %}
+            {% set blogCategories = listing.aggregations.get('blogCategories') %}
+            {% if not blogCategories.entities is empty %}
+                {% set blogCategoriesSorted = blogCategories.entities|sort((a, b) => a.translated.name|lower > b.translated.name|lower) %}
+
+                {% sw_include '@Storefront/storefront/component/listing/filter/filter-multi-select.html.twig' with {
+                    elements: blogCategoriesSorted,
+                    sidebar: sidebar,
+                    name: 'categories',
+                    displayName: 'sas-blog.listing.filterBlogCategoriesDisplayName'|trans|sw_sanitize
+                } %}
+            {% endif %}
+        {% endblock %}
+
+        {% block component_filter_panel_item_author %}
+            {% set authors = listing.aggregations.get('authors') %}
+            {% if not authors.entities is empty %}
+                {% set authorsSorted = authors.entities|sort((a, b) => a.translated.name|lower > b.translated.name|lower) %}
+
+                {% sw_include '@Storefront/storefront/component/listing/filter/filter-multi-select.html.twig' with {
+                    elements: authorsSorted,
+                    sidebar: sidebar,
+                    name: 'authors',
+                    displayName: 'sas-blog.listing.filterBlogAuthorDisplayName'|trans|sw_sanitize
+                } %}
+            {% endif %}
+        {% endblock %}
+    </div>
+{% endblock %}

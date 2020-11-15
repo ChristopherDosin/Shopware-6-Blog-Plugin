@@ -1,9 +1,17 @@
 {
     "sas-blog": {
+        "detail": {
+            "meta": {
+                "author": "Author",
+                "category": "Categories"
+            }
+        },
         "listing": {
             "readMoreLabel": "read more",
             "emptyResultMessage": "We couldn't find any results for your search request",
-            "filterPanelResetAll": "Reset"
+            "filterPanelResetAll": "Reset",
+            "filterBlogCategoriesDisplayName": "Categories",
+            "filterBlogAuthorDisplayName": "Author"
         }
     }
 }

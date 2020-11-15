@@ -13,7 +13,8 @@
             "messageEmpty": "Keine Einträge vorhanden",
             "table": {
                 "title": "Titel",
-                "active": "Aktiv"
+                "active": "Aktiv",
+                "author": "Author"
             }
         },
         "detail": {
@@ -44,6 +45,14 @@
                 "error": {
                     "missingCategory": "Please choose at least one blog category!"
                 }
+            },
+            "author": {
+                "label": "Author",
+                "placeholder": "Select a blog's author"
+            },
+            "category": {
+                "label": "Categories",
+                "placeholder": "Select blog's categories"
             }
         },
         "elements": {

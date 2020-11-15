@@ -1,42 +1,46 @@
 {% block sas_blog_list %}
-    <sw-page class="sas-blog-list">
-        <template slot="smart-bar-header">
-            <h2>
-            {% block sas_blog_list_smart_bar_header_title_text %}
-                {{ $tc('sas-blog.list.textBlogOverview') }}
-            {% endblock %}
-            {% block sas_blog_list_smart_bar_header_amount %}
-                <span v-if="!isLoading" class="sw-page__smart-bar-amount">
+        <sw-page class="sas-blog-list">
+            <template slot="smart-bar-header">
+                <h2>
+                    {% block sas_blog_list_smart_bar_header_title_text %}
+                    {{ $tc('sas-blog.list.textBlogOverview') }}
+                    {% endblock %}
+                    {% block sas_blog_list_smart_bar_header_amount %}
+                    <span v-if="!isLoading" class="sw-page__smart-bar-amount">
                     ({{ total }})
                 </span>
-            {% endblock %}
-            </h2>
-        </template>
-        <template #language-switch>
-            <sw-language-switch @on-change="changeLanguage"></sw-language-switch>
-        </template>
-        {% block sas_blog_list_smart_bar_actions %}
+                    {% endblock %}
+                </h2>
+            </template>
+            <template #language-switch>
+                <sw-language-switch @on-change="changeLanguage"></sw-language-switch>
+            </template>
+            {% block sas_blog_list_smart_bar_actions %}
             <template slot="smart-bar-actions">
                 {% block sas_blog_list_smart_bar_actions_add %}
-                    <sw-button :routerLink="{ name: 'blog.module.create' }" variant="primary">
-                        {{ $tc('sas-blog.list.buttonAddBlogEntry') }}
-                    </sw-button>
+                <sw-button :routerLink="{ name: 'blog.module.create' }" variant="primary">
+                    {{ $tc('sas-blog.list.buttonAddBlogEntry') }}
+                </sw-button>
                 {% endblock %}
             </template>
-        {% endblock %}
-
-        <template #side-content>
-            {% block sw_category_side_content %}
-            <sas-blog-category-tree
-                :categoryId="categoryId"
-                :currentLanguageId="currentLanguageId"
-                @change-category-id="changeCategoryId"
-            ></sas-blog-category-tree>
             {% endblock %}
-        </template>
 
-        <template slot="content">
-            {% block sas_blog_list_content %}
+            <template #sidebar>
+                <sas-blog-vertical-tabs />
+            </template>
+
+            <template #side-content>
+                {% block sas_blog_category_side_content %}
+                <sas-blog-category-tree
+                    :categoryId="categoryId"
+                    :currentLanguageId="currentLanguageId"
+                    @change-category-id="changeCategoryId"
+                ></sas-blog-category-tree>
+                {% endblock %}
+            </template>
+
+            <template #content>
+                {% block sas_blog_list_content %}
                 <sw-entity-listing
                     v-if="blogEntries"
                     :items="blogEntries"
@@ -46,29 +50,41 @@
                     detailRoute="blog.module.detail">
 
                     {% block sas_blog_list_grid_columns_name %}
-                        <template slot="column-active" slot-scope="{ item, isInlineEdit }">
-                            {% block sas_blog_list_grid_columns_name_inline_edit %}
-                                <template v-if="isInlineEdit">
-                                    <sw-checkbox-field v-model="item.active"></sw-checkbox-field>
-                                </template>
-                            {% endblock %}
-
-                            {% block sas_blog_list_grid_columns_name_content %}
-                                <template v-else>
-                                    <sw-icon v-if="item.active" name="small-default-checkmark-line-medium" small class="is--active"></sw-icon>
-                                    <sw-icon v-else name="small-default-x-line-medium" small class="is--inactive"></sw-icon>
-                                </template>
-                            {% endblock %}
+                    <template slot="column-active" slot-scope="{ item, isInlineEdit }">
+                        {% block sas_blog_list_grid_columns_name_inline_edit %}
+                        <template v-if="isInlineEdit">
+                            <sw-checkbox-field v-model="item.active"></sw-checkbox-field>
                         </template>
+                        {% endblock %}
+
+                        {% block sas_blog_list_grid_columns_name_content %}
+                        <template v-else>
+                            <sw-icon v-if="item.active" name="small-default-checkmark-line-medium" small class="is--active"></sw-icon>
+                            <sw-icon v-else name="small-default-x-line-medium" small class="is--inactive"></sw-icon>
+                        </template>
+                        {% endblock %}
+                    </template>
+                    {% endblock %}
+
+                    {% block sas_blog_list_grid_columns_author %}
+                    <template slot="column-author" slot-scope="{ item }">
+                        {% block sas_blog_list_grid_columns_author_content %}
+                            <router-link :to="{ name: 'blog.module.author.detail', params: { id: item.authorId } }">
+                                {{ salutation(item.author) }}
+                            </router-link>
+                        {% endblock %}
+                    </template>
                     {% endblock %}
 
                 </sw-entity-listing>
-            {% endblock %}
+                {% endblock %}
 
-            {% block sas_blog_list_empty_state %}
-                <sw-empty-state v-if="!isLoading && !total" :title="$tc('sas-blog.list.messageEmpty')"></sw-empty-state>
-            {% endblock %}
-        </template>
+                {% block sas_blog_list_empty_state %}
+                <sw-empty-state v-if="!isLoading && !total" :title="$tc('sas-blog.list.messageEmpty')">
+                    {{ $tc('sas-blog-author.list.messageEmpty') }}
+                </sw-empty-state>
+                {% endblock %}
+            </template>
 
-    </sw-page>
+        </sw-page>
 {% endblock %}

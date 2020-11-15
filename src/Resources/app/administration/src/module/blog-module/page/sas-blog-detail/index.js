@@ -79,7 +79,7 @@ Component.register('sas-blog-detail', {
             return this.repositoryFactory.create('media');
         },
 
-        ...mapPropertyErrors('blog', ['title', 'slug'])
+        ...mapPropertyErrors('blog', ['title', 'slug', 'teaser', 'authorId'])
     },
 
     methods: {

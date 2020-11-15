@@ -30,6 +30,14 @@
             <tag name="shopware.entity.definition"/>
         </service>
 
+        <service id="Sas\BlogModule\Content\BlogAuthor\BlogAuthorDefinition">
+            <tag name="shopware.entity.definition"/>
+        </service>
+
+        <service id="Sas\BlogModule\Content\BlogAuthor\BlogAuthorTranslation\BlogAuthorTranslationDefinition">
+            <tag name="shopware.entity.definition"/>
+        </service>
+
         <service id="Sas\BlogModule\Resources\snippet\en_GB\SnippetFile_en_GB" public="true">
             <tag name="shopware.snippet.file"/>
         </service>

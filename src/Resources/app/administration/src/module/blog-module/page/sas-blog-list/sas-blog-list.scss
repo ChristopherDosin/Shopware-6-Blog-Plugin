@@ -1,6 +1,39 @@
+@import "~scss/variables";
+
 .sas-blog-list {
 
     .sw-data-grid__cell--title {
         width: 82%;
+    }
+
+    .sw-page__content {
+        .sw-page__side-content {
+            grid-area: a;
+
+            .sw-tree .sw-tree-actions__headline {
+                font-size: 14px;
+                font-weight: bold;
+                height: 64px;
+                color: $color-darkgray-200;
+            }
+
+            .sw-tree__content, .sw-tree .sw-tree-actions__headline {
+                border-left: 1px solid $color-gray-300;
+            }
+        }
+
+        .sw-page__main-content {
+            grid-area: b;
+        }
+
+        .sw-page__sidebar {
+            grid-area: c;
+            padding: 40px 20px;
+        }
+
+        &.has--smart-bar.has--side-content {
+            grid-template-columns: 100px 440px auto;
+            grid-template-areas: "c a b";
+        }
     }
 }

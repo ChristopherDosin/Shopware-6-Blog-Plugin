@@ -3,6 +3,7 @@ namespace Sas\BlogModule\Content\Blog;
 
 use Sas\BlogModule\Content\Blog\Aggregate\BlogCategoryMappingDefinition;
 use Sas\BlogModule\Content\Blog\BlogTranslation\BlogTranslationDefinition;
+use Sas\BlogModule\Content\BlogAuthor\BlogAuthorDefinition;
 use Sas\BlogModule\Content\BlogCategory\BlogCategoryDefinition;
 use Shopware\Core\Content\Media\MediaDefinition;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityDefinition;
@@ -13,6 +14,7 @@ use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\PrimaryKey;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\Required;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\IdField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\ManyToManyAssociationField;
+use Shopware\Core\Framework\DataAbstractionLayer\Field\ManyToOneAssociationField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\OneToOneAssociationField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\TranslatedField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\TranslationsAssociationField;
@@ -56,6 +58,7 @@ class BlogEntriesDefinition extends EntityDefinition
             new BoolField('active', 'active'),
 
             (new FkField('media_id', 'mediaId', MediaDefinition::class)),
+            (new FkField('author_id', 'authorId', BlogAuthorDefinition::class))->addFlags(new Required()),
             (new OneToOneAssociationField('media', 'media_id', 'id', MediaDefinition::class, true)),
 
             new TranslatedField('title'),
@@ -68,6 +71,7 @@ class BlogEntriesDefinition extends EntityDefinition
             (new TranslationsAssociationField(BlogTranslationDefinition::class, 'sas_blog_entries_id'))->addFlags(new Required()),
 
             (new ManyToManyAssociationField('blogCategories', BlogCategoryDefinition::class, BlogCategoryMappingDefinition::class, 'sas_blog_entries_id', 'sas_blog_category_id'))->addFlags(new CascadeDelete()),
+            new ManyToOneAssociationField('author', 'author_id', BlogAuthorDefinition::class, 'id', false),
         ]);
     }
 }

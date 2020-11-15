@@ -41,6 +41,15 @@ import './component/blog-tree-item';
 import './component/blog-category-tree';
 import './component/blog-category-tree-field';
 
+/**
+ * Blog author
+ */
+import './page/sas-blog-author/sas-blog-author-list';
+import './page/sas-blog-author/sas-blog-author-detail';
+import './page/sas-blog-author/sas-blog-author-create';
+
+import './component/blog-vertical-tabs';
+
 Module.register('blog-module', {
     type: 'plugin',
     name: 'Blog',
@@ -59,7 +68,7 @@ Module.register('blog-module', {
             components: {
                 default: 'sas-blog-list'
             },
-            path: 'index'
+            path: 'index',
         },
         create: {
             components: {
@@ -70,6 +79,34 @@ Module.register('blog-module', {
         detail: {
             component: 'sas-blog-detail',
             path: 'detail/:id'
+        },
+        author: {
+            path: 'author',
+            component: 'sas-blog-author-list',
+            meta: {
+                parentPath: 'blog.module.index'
+            },
+            redirect: {
+                name: 'blog.module.author.index'
+            },
+        },
+        'author.index': {
+            path: 'author/index',
+            component: 'sas-blog-author-list',
+        },
+        'author.create': {
+            path: 'author/new',
+            component: 'sas-blog-author-create',
+            meta: {
+                parentPath: 'blog.module.author.index'
+            }
+        },
+        'author.detail': {
+            path: 'author/detail/:id',
+            component: 'sas-blog-author-detail',
+            meta: {
+                parentPath: 'blog.module.author.index'
+            }
         }
     },
 

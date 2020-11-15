@@ -20,12 +20,14 @@
         <div class="cms-element-product-listing">
             {% if searchResult.total > 0 %}
                 <div class="cms-element-sas-blog-listing-actions row justify-content-between">
-                    <div class="col-md-auto">
-                        {% sw_include '@Storefront/storefront/component/pagination.html.twig' with {
-                            entities: searchResult,
-                            criteria: searchResult.criteria
-                        } %}
-                    </div>
+                    {% block sas_block_pagination %}
+                        <div class="col-md-auto">
+                            {% sw_include '@Storefront/storefront/component/pagination.html.twig' with {
+                                entities: searchResult,
+                                criteria: searchResult.criteria
+                            } %}
+                        </div>
+                    {% endblock %}
                 </div>
             {% endif %}
 

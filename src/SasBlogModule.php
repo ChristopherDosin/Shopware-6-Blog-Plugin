@@ -19,6 +19,8 @@ use Shopware\Core\System\SystemConfig\SystemConfigService;
 
 class SasBlogModule extends Plugin
 {
+    public const ANONYMOUS_AUTHOR_ID = '64f4c60194634128b9b85d9299797c45';
+
     public function install(InstallContext $installContext): void
     {
         parent::install($installContext);
@@ -60,6 +62,21 @@ class SasBlogModule extends Plugin
         $connection->executeQuery('DROP TABLE IF EXISTS `sas_blog_blog_category`');
         $connection->executeQuery('DROP TABLE IF EXISTS `sas_blog_category_translation`');
         $connection->executeQuery('DROP TABLE IF EXISTS `sas_blog_category`');
+        $connection->executeQuery('DROP TABLE IF EXISTS `sas_blog_author_translation`');
+        $connection->executeQuery('DROP TABLE IF EXISTS `sas_blog_author`');
+
+        /** @var EntityRepositoryInterface $cmsBlockRepo */
+        $cmsBlockRepo = $this->container->get('cms_block.repository');
+
+        $context = Context::createDefaultContext();
+
+        $criteria = new Criteria();
+        $criteria->addFilter(new EqualsAnyFilter('type', ['blog-detail', 'blog-listing']));
+
+        $cmsBlocks = $cmsBlockRepo->searchIds($criteria, $context);
+
+        $cmsBlockRepo->delete(array_values($cmsBlocks->getData()), $context);
+
         $connection->executeQuery('SET FOREIGN_KEY_CHECKS=1;');
     }
 
@@ -82,6 +99,9 @@ class SasBlogModule extends Plugin
      */
     public function createBlogMediaFolder(Context $context): void
     {
+        $this->deleteDefaultMediaFolder($context);
+        $this->checkForThumbnailSizes($context);
+
         /** @var EntityRepositoryInterface $mediaFolderRepository */
         $mediaFolderRepository = $this->container->get('media_default_folder.repository');
 
@@ -201,7 +221,7 @@ class SasBlogModule extends Plugin
 
     private function getLifeCycle(): Lifecycle
     {
-        /** @var SystemConfigSedeleteCmsPagevice $systemConfig */
+        /** @var SystemConfigService $systemConfig */
         $systemConfig = $this->container->get(SystemConfigService::class);
 
         /** @var EntityRepositoryInterface $cmsPageRepository */

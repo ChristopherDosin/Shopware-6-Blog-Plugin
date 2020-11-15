@@ -1,0 +1,7 @@
+{% block sas_block_partials_author %}
+    <figure class="sas-author figure mr-2">
+        <figcaption class="figure-caption">{% sw_icon 'avatar' style { 'size': 'sm' } %}
+            <span data-toggle="tooltip" title="{{ "sas-blog.detail.meta.author"|trans|striptags }}">{{ author.displayName ?? author.translated.name }}</span>
+        </figcaption>
+    </figure>
+{% endblock %}

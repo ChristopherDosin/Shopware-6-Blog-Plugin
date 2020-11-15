@@ -11,5 +11,27 @@
         </sw-select-field>
     {% endblock %}
 
+    {% block sas_cms_element_blog_listing_config_show_type %}
+        <sw-select-field :label="$tc('sas-blog.elements.listing.config.showType.label')"
+                         v-model="element.config.showType.value">
+            {% block sas_cms_element_download_card_config_layout_select_options %}
+            <option value="all">{{ $tc('sas-blog.elements.listing.config.showType.options.all') }}</option>
+            <option value="select">{{ $tc('sas-blog.elements.listing.config.showType.options.select') }}</option>
+            {% endblock %}
+        </sw-select-field>
+    {% endblock %}
+
+
+    {% block sas_cms_element_blog_listing_config_select_categories %}
+        <sas-blog-category-tree-field
+            v-if="element.config.showType.value !== 'all' && selectedCategories"
+            v-model="selectedCategories"
+            :label="$tc('sas-blog.elements.listing.config.blogCategories.label')"
+            :categoriesCollection="selectedCategories"
+            class="sw-product-detail__select-category"
+            :placeholder="$tc('sas-blog.elements.listing.config.blogCategories.placeholder')">
+        </sas-blog-category-tree-field>
+    {% endblock %}
+
 </div>
 {% endblock %}

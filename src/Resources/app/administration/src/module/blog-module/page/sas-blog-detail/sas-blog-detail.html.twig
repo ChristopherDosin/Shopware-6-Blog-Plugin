@@ -1,7 +1,7 @@
 {% block sas_blog_detail %}
-    <sw-page class="sas-blog-list">
+    <sw-page class="sas-blog-list" :isLoading="isLoading">
         <template #smart-bar-header>
-            <h2 v-html="blog.title"></h2>
+            <h2 v-html="blog ? blog.title : 'blog'"></h2>
         </template>
 
         <template #language-switch>
@@ -40,7 +40,8 @@
 
                             <sw-textarea-field type="textarea"
                                 v-model="blog.teaser"
-                                :placeholder="$tc('sas-blog.detail.teaserPlaceholder')"
+                               :error="blogTeaserError"
+                               :placeholder="$tc('sas-blog.detail.teaserPlaceholder')"
                                 :label="$tc('sas-blog.detail.teaserLabel')">
                             </sw-textarea-field>
 
@@ -95,7 +96,7 @@
                     </sw-card>
                     -->
                 </div>
-                <div>
+                <div v-if="blog">
                     <sw-text-field
                         v-model="blog.slug"
                         placeholder="Undefined"
@@ -112,14 +113,35 @@
                         -->
                     </sw-card>
 
+                    <sw-card style="margin-top: 20px">
+                        <sw-entity-single-select
+                            class="sas-blog-author-base-form__salutation-select"
+                            entity="sas_blog_author"
+                            :label="$tc('sas-blog.detail.author.label')"
+                            :placeholder="$tc('sas-blog.detail.author.placeholder')"
+                            :error="blogAuthorIdError"
+                            labelProperty="translated.name"
+                            required
+                            v-model ="blog.authorId">
+                            <template #selection-label-property="{item}">
+                                <span>{{ item.firstName }} {{ item.lastName }} <i>({{ item.email }})</i></span>
+                            </template>
+                            <template #result-label-property="{item}">
+                                <span>{{ item.firstName }} {{ item.lastName }} <i>({{ item.email }})</i></span>
+                            </template>
+
+                        </sw-entity-single-select>
+                    </sw-card>
+
+
                     <sw-card style="margin-top: 20px;">
-                        <h3 style="margin-bottom: 5px;">Categories</h3>
                         <sas-blog-category-tree-field
                             required
                             v-model="blog.blogCategories"
+                            :label="$tc('sas-blog.detail.category.label')"
                             :categoriesCollection="blog.blogCategories"
                             class="sw-product-detail__select-category"
-                            :placeholder="$tc('sw-product.categoryForm.placeholderCategory')">
+                            :placeholder="$tc('sas-blog.detail.category.placeholder')">
                         </sas-blog-category-tree-field>
                         <!--
                         <p style="color: #189eff">Add a specific release date.</p>

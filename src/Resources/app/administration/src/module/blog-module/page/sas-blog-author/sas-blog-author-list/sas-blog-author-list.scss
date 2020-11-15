@@ -1,0 +1,24 @@
+@import "~scss/variables";
+
+.sas-blog-author-list {
+
+    .sw-data-grid__cell--title {
+        width: 82%;
+    }
+
+    .sw-page__content {
+        .sw-page__main-content {
+            grid-area: b;
+        }
+
+        .sw-page__sidebar {
+            grid-area: a;
+            padding: 40px 20px;
+        }
+
+        &.has--smart-bar.has--side-bar {
+            grid-template-columns: 100px auto;
+            grid-template-areas: "a b";
+        }
+    }
+}

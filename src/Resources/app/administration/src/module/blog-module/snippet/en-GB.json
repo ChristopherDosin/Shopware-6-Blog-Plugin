@@ -13,7 +13,8 @@
             "messageEmpty": "No blog entries ...",
             "table": {
                 "title": "Title",
-                "active": "Active"
+                "active": "Active",
+                "author": "Author"
             }
         },
         "detail": {
@@ -49,12 +50,31 @@
                 "error": {
                     "missingCategory": "Please choose at least one blog category!"
                 }
+            },
+            "author": {
+                "label": "Author",
+                "placeholder": "Select a blog's author"
+            },
+            "category": {
+                "label": "Categories",
+                "placeholder": "Select blog's categories"
             }
         },
         "elements": {
             "listing": {
                 "config": {
-                    "paginationCount": "Pagination count"
+                    "paginationCount": "Pagination count",
+                    "showType": {
+                        "label": "Show type",
+                        "options": {
+                            "all": "All",
+                            "select": "Select categories"
+                        }
+                    },
+                    "blogCategories": {
+                        "label": "Categories",
+                        "placeholder": "Select categories"
+                    }
                 },
                 "component": {
                     "elementHeadline": "Blog listing element",
@@ -108,6 +128,56 @@
                 "createSub": "New subcategory",
                 "createBefore": "New category before",
                 "createAfter": "New category after"
+            }
+        }
+    },
+    "sas-blog-author": {
+        "general": {
+            "mainMenuItemList": "Author"
+        },
+        "list": {
+            "textBlogOverview": "Blog authors",
+            "buttonAdd": "Add new blog author",
+            "messageEmpty": "No blog authors ...",
+            "table": {
+                "fullName": "Full name",
+                "displayName": "Display name",
+                "email": "Email",
+                "salutation": "Salutation"
+            }
+        },
+        "detail": {
+            "title": "Blog author",
+            "messageSaveSuccess": "Author \"{name}\" has been saved.",
+            "buttonSave": "Save",
+            "buttonCancel": "Cancel",
+            "buttonEdit": "Edit",
+            "firstName": {
+                "label": "First Name",
+                "placeholder": "Enter author's first name"
+            },
+            "lastName": {
+                "label": "Last Name",
+                "placeholder": "Enter author's last name"
+            },
+            "displayName": {
+                "label": "Display Name",
+                "placeholder": "Enter author's display name"
+            },
+            "email": {
+                "label": "Email",
+                "placeholder": "Enter author's email"
+            },
+            "description": {
+                "label": "Description",
+                "placeholder": "Enter author's short description"
+            },
+            "salutation": {
+                "label": "Salutation",
+                "placeholder": "Salutation"
+            },
+            "media": {
+                "label": "Author's avatar"
             }
         }
     },

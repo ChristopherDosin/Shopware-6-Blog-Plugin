@@ -1,0 +1,110 @@
+{% block sas_blog_author_detail %}
+<sw-page class="sas-blog-author-detail">
+    <template slot="smart-bar-header">
+        <h2>
+            {% block sas_blog_author_detail_smart_bar_header_title_text %}
+                 {{ salutation(blogAuthor) || $tc('sas-blog-author.detail.title') }}
+            {% endblock %}
+        </h2>
+    </template>
+
+    <template slot="smart-bar-actions">
+        <sw-button :routerLink="{ name: 'sas.blog.author.index' }">
+            {{ $tc('sas-blog-author.detail.buttonCancel') }}
+        </sw-button>
+
+        <sw-button-process
+            :isLoading="isLoading"
+            :processSuccess="processSuccess"
+            variant="primary"
+            @process-finish="saveFinish"
+            @click="onSave">
+            {{ $tc('sas-blog-author.detail.buttonSave') }}
+        </sw-button-process>
+
+    </template>
+
+    <template slot="content">
+        <sw-card-view>
+            <sw-card v-if="blogAuthor" :isLoading="isLoading" :title="$tc('sas-blog-author.detail.title')">
+
+                    <sw-container columns="2fr 4fr 4fr" gap="16px">
+                        <sw-entity-single-select
+                            class="sas-blog-author-base-form__salutation-select"
+                            entity="salutation"
+                            :label="$tc('sas-blog-author.detail.salutation.label')"
+                            :placeholder="$tc('sas-blog-author.detail.salutation.placeholder')"
+                            :error="blogAuthorSalutationIdError"
+                            labelProperty="displayName"
+                            required
+                            v-model ="blogAuthor.salutationId">
+                        </sw-entity-single-select>
+
+                        <sw-text-field
+                            required
+                            :error="blogAuthorFirstNameError"
+                            :placeholder="$tc('sas-blog-author.detail.firstName.placeholder')"
+                            :label="$tc('sas-blog-author.detail.firstName.label')"
+                            v-model="blogAuthor.firstName">
+                        </sw-text-field>
+
+                        <sw-text-field
+                            required
+                            :error="blogAuthorLastNameError"
+                            :placeholder="$tc('sas-blog-author.detail.lastName.placeholder')"
+                            :label="$tc('sas-blog-author.detail.lastName.label')"
+                            v-model="blogAuthor.lastName">
+                        </sw-text-field>
+                    </sw-container>
+
+                    <sw-container columns="6fr 4fr" gap="24px">
+                        <sw-text-field
+                            :error="blogAuthorDisplayNameError"
+                            :placeholder="$tc('sas-blog-author.detail.displayName.placeholder')"
+                            :label="$tc('sas-blog-author.detail.displayName.label')"
+                            v-model="blogAuthor.displayName">
+                        </sw-text-field>
+
+                        <sw-text-field
+                            required
+                            :error="blogAuthorEmailError"
+                            :placeholder="$tc('sas-blog-author.detail.email.placeholder')"
+                            :label="$tc('sas-blog-author.detail.email.label')"
+                            v-model="blogAuthor.email">
+                        </sw-text-field>
+                    </sw-container>
+
+                <sw-container columns="1fr" gap="32px">
+                    <sw-text-editor
+                        :label="$tc('sas-blog-author.detail.description.label')"
+                        :placeholder="$tc('sas-blog-author.detail.description.placeholder')"
+                        :error="blogAuthorDescriptionError"
+                        v-model="blogAuthor.description">
+                    </sw-text-editor>
+                </sw-container>
+
+                <sw-upload-listener
+                        :uploadTag="blogAuthor.id"
+                        @media-upload-finish="onSetMediaItem"
+                        autoUpload>
+                    </sw-upload-listener>
+
+                    <sw-media-upload-v2
+                        variant="regular"
+                        :allowMultiSelect="false"
+                        defaultFolder="sas_blog_author"
+                        :disabled="isLoading"
+                        :fileAccept="fileAccept"
+                        :label="$tc('sas-blog-author.detail.media.label')"
+                        :uploadTag="blogAuthor.id"
+                        :caption="$tc('sw-cms.elements.general.config.caption.mediaUpload')"
+                        :source="blogAuthor.mediaId"
+                        @media-upload-remove-image="onRemoveMediaItem"
+                        @media-drop="onMediaDropped">
+                    </sw-media-upload-v2>
+            </sw-card>
+        </sw-card-view>
+    </template>
+
+</sw-page>
+{% endblock %}

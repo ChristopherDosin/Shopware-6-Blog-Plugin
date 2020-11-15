@@ -1,6 +1,7 @@
 <?php declare(strict_types=1);
 namespace Sas\BlogModule\Controller;
 
+use Sas\BlogModule\Content\Blog\BlogEntriesEntity;
 use Shopware\Core\Content\Cms\Exception\PageNotFoundException;
 use Shopware\Core\Content\Cms\SalesChannel\SalesChannelCmsPageLoaderInterface;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityRepositoryInterface;
@@ -56,7 +57,11 @@ class BlogController extends StorefrontController
 
         $criteria = new Criteria([$articleId]);
 
+        $criteria->addAssociations(['author.salutation', 'blogCategories']);
+
         $results = $blogRepository->search($criteria, $context->getContext())->getEntities();
+
+        /** @var BlogEntriesEntity $entry */
         $entry = $results->first();
 
         if (!$entry) {
@@ -70,6 +75,11 @@ class BlogController extends StorefrontController
         );
 
         $page->setCmsPage($pages->first());
+        $metaInformation = $page->getMetaInformation();
+
+        $metaInformation->setAuthor($entry->getAuthor()->getTranslated()['name']);
+
+        $page->setMetaInformation($metaInformation);
 
         return $this->renderStorefront('@Storefront/storefront/page/content/index.html.twig', [
             'page'  => $page,

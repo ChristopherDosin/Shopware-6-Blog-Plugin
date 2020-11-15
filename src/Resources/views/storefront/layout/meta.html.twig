@@ -8,7 +8,6 @@
             {% set metaTitle = entry.translated.title|striptags|trim %}
         {% endif %}
     {% endif %}
-
     {{ parent() }}
 {% endblock %}
 
@@ -38,6 +37,7 @@
                 "datePublished": "{{ entry.createdAt|date }}",
                 "dateModified": "{{ entry.updatedAt|date }}",
                 "description": "{{ entry.translated.teaser }}",
+                "author": "{{ entry.author.translated.name }}",
                 "mainEntityOfPage": {
                     "@type": "WebPage",
                     "@id": "{{ seoUrl('sas.frontend.blog.detail', { articleId: entry.id }) }}"
