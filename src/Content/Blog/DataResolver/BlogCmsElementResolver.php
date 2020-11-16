@@ -188,7 +188,7 @@ class BlogCmsElementResolver extends AbstractCmsElementResolver
             'authors',
             !empty($ids),
             [
-                new EntityAggregation('authors', 'authorId', 'sas_blog_author')
+                new EntityAggregation('authors', 'authorId', 'sas_blog_author'),
             ],
             new EqualsAnyFilter('authorId', $ids),
             $ids

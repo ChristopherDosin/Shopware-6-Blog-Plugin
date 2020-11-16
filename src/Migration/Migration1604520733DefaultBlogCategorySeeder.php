@@ -17,11 +17,6 @@ class Migration1604520733DefaultBlogCategorySeeder extends MigrationStep
 {
     use ImportTranslationsTrait;
 
-    /**
-     * @var string
-     */
-    private $deDeLanguageId;
-
     public function getCreationTimestamp(): int
     {
         return 1604520733;

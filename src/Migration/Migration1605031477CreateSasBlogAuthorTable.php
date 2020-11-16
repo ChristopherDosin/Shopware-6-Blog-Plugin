@@ -1,5 +1,4 @@
 <?php declare(strict_types=1);
-
 namespace Sas\BlogModule\Migration;
 
 use Doctrine\DBAL\Connection;
@@ -57,19 +56,19 @@ class Migration1605031477CreateSasBlogAuthorTable extends MigrationStep
 
         $notSpecified = $connection->fetchColumn("SELECT id from salutation WHERE salutation_key = 'not_specified' LIMIT 1");
 
-        $defaultAuthorId = $connection->fetchColumn("SELECT id from sas_blog_author LIMIT 1");
+        $defaultAuthorId = $connection->fetchColumn('SELECT id from sas_blog_author LIMIT 1');
 
         if (empty($defaultAuthorId)) {
             $defaultAuthorId = Uuid::fromHexToBytes(SasBlogModule::ANONYMOUS_AUTHOR_ID);
 
             $connection->insert('sas_blog_author', [
-                'id' => $defaultAuthorId,
-                'first_name' => 'N/A',
-                'last_name' => 'N/A',
+                'id'            => $defaultAuthorId,
+                'first_name'    => 'N/A',
+                'last_name'     => 'N/A',
                 'salutation_id' => $notSpecified,
-                'display_name' => 'Anonymous',
-                'email' => 'N/A',
-                'created_at' => (new \DateTime())->format(Defaults::STORAGE_DATE_TIME_FORMAT)
+                'display_name'  => 'Anonymous',
+                'email'         => 'N/A',
+                'created_at'    => (new \DateTime())->format(Defaults::STORAGE_DATE_TIME_FORMAT),
             ]);
         }
 
