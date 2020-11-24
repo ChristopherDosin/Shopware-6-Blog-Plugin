@@ -88,6 +88,6 @@ class Lifecycle
         ];
 
         $this->cmsPageRepository->create($cmsPage, $context);
-        $this->systemConfig->set('BlogModule.config.cmsBlogDetailPage', $blogDetailCmsPageId);
+        $this->systemConfig->set('SasBlogModule.config.cmsBlogDetailPage', $blogDetailCmsPageId);
     }
 }
