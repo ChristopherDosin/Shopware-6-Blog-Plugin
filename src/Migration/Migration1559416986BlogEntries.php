@@ -56,7 +56,7 @@ class Migration1559416986BlogEntries extends MigrationStep
             'id'         => Uuid::randomBytes(),
             'routeName'  => 'sas.frontend.blog.detail',
             'entityName' => 'sas_blog_entries',
-            'template'   => 'Blog/{{ entry.title }}',
+            'template'   => 'blog/{{ entry.title|lower }}',
             'createdAt'  => (new \DateTime())->format(Defaults::STORAGE_DATE_TIME_FORMAT),
         ]);
     }
