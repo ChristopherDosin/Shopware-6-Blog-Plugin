@@ -1,6 +1,17 @@
 @import "~scss/variables";
 
+$sw-property-list-color-error: $color-crimson;
+$sw-property-list-color-success: $color-emerald;
+
 .sas-blog-list {
+
+    .is--inactive {
+        color: $sw-property-list-color-error;
+    }
+
+    .is--active {
+        color: $sw-property-list-color-success;
+    }
 
     .sw-data-grid__cell--title {
         width: 82%;
@@ -34,6 +45,12 @@
         &.has--smart-bar.has--side-content {
             grid-template-columns: 100px 440px auto;
             grid-template-areas: "c a b";
+        }
+
+        .sw-data-grid__cell--active {
+            .sw-data-grid__cell-content {
+                justify-content: center;
+            }
         }
     }
 }

@@ -9,6 +9,7 @@
     .sw-page__content {
         .sw-page__main-content {
             grid-area: b;
+            border-left: 1px solid $color-gray-300;
         }
 
         .sw-page__sidebar {

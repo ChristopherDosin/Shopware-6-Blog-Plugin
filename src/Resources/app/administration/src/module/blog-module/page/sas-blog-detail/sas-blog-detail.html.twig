@@ -1,5 +1,5 @@
 {% block sas_blog_detail %}
-    <sw-page class="sas-blog-list" :isLoading="isLoading">
+    <sw-page class="sas-blog-detail" :isLoading="isLoading">
         <template #smart-bar-header>
             <h2 v-html="blog ? blog.title : 'blog'"></h2>
         </template>
@@ -24,7 +24,7 @@
         {% endblock %}
 
         <template #content>
-            <sw-container columns="65% 1fr" gap="40px" style="padding:40px">
+            <sw-container columns="2fr 1fr" gap="40px" class="sas-blog-detail-container">
                 <div>
                     <sw-card>
                         <sw-container columns="100%" gap="20px" v-if="blog != null">
