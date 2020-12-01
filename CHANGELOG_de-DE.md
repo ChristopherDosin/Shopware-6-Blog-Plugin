@@ -1,3 +1,10 @@
+# 1.1.5
+* Added missing German author translations
+
+# 1.1.4
+* Added author entity
+* Added category entity
+
 # 1.1.3
 * changed `SalesChannelCmsPageLoader` to `SalesChannelCmsPageLoaderInterface` in `BlogController`
 

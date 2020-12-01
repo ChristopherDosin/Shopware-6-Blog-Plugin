@@ -108,6 +108,56 @@
             }
         }
     },
+    "sas-blog-author": {
+        "general": {
+            "mainMenuItemList": "Autor"
+        },
+        "list": {
+            "textBlogOverview": "Autoren",
+            "buttonAdd": "Autor erstellen",
+            "messageEmpty": "Keine Autoren ...",
+            "table": {
+                "fullName": "Voller Name",
+                "displayName": "Anzeigename",
+                "email": "Email",
+                "salutation": "Anrede"
+            }
+        },
+        "detail": {
+            "title": "Autor",
+            "messageSaveSuccess": "Autor \"{name}\" wurde gespeichert.",
+            "buttonSave": "Speichern",
+            "buttonCancel": "Abbrechen",
+            "buttonEdit": "Editieren",
+            "firstName": {
+                "label": "Vorname",
+                "placeholder": "Gebe den Vornamen des Autors ein"
+            },
+            "lastName": {
+                "label": "Nachname",
+                "placeholder": "Gebe den Nachnamen des Autors ein"
+            },
+            "displayName": {
+                "label": "Anzeigename",
+                "placeholder": "Gebe den Anzeigenamen des Autors ein"
+            },
+            "email": {
+                "label": "Email",
+                "placeholder": "Gebe die Email Adresse des Autors ein"
+            },
+            "description": {
+                "label": "Beschreibung",
+                "placeholder": "Gebe eine kurze Beschreibung des Autors ein"
+            },
+            "salutation": {
+                "label": "Anrede",
+                "placeholder": "Anrede"
+            },
+            "media": {
+                "label": "Avatar des Autors"
+            }
+        }
+    },
     "sas-blog-tree-item": {
         "actions": {
             "edit": "Edit"
