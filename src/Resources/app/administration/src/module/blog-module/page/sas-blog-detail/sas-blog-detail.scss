@@ -1,36 +1,57 @@
-.serp-preview {
-    margin-bottom: 20px;
-
+.sas-blog-detail {
     h3 {
-        font-family: arial, sans-serif !important;
-        margin: 0;
-        color: rgb(26, 13, 171);
-        font-size: 18px;
-        font-weight: 400;
-        line-height: 1.2;
-    }
-    p {
-        font-family: arial, sans-serif !important;
-        color: #4d5156;
-        font-size: 13px;
-        line-height: 1.4;
         margin-top: 5px;
     }
-    cite {
-        font-family: arial, sans-serif !important;
-        margin: 0;
-        font-style: normal;
-        height: 18px;
-        color: rgb(0, 102, 33);
-        font-size: 14px;
-        line-height: 16px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-}
 
-.sas-blog-detail {
+    .sw-card {
+        &:not(:first-child) {
+            margin-top: 20px;
+        }
+    }
+
+    .serp-preview-card {
+        .sas-text-field {
+            .sw-field {
+                margin-bottom: 0;
+            }
+
+            margin-bottom: 32px;
+        }
+
+        .serp-preview {
+            margin-bottom: 20px;
+
+            h3 {
+                font-family: arial, sans-serif !important;
+                margin: 0;
+                color: rgb(26, 13, 171);
+                font-size: 18px;
+                font-weight: 400;
+                line-height: 1.2;
+                word-break: break-all;
+            }
+            p {
+                font-family: arial, sans-serif !important;
+                color: #4d5156;
+                font-size: 13px;
+                line-height: 1.4;
+                margin-top: 5px;
+                word-break: break-all;
+            }
+            cite {
+                font-family: arial, sans-serif !important;
+                margin: 0;
+                font-style: normal;
+                height: 18px;
+                color: rgb(0, 102, 33);
+                font-size: 14px;
+                line-height: 16px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+    }
 
     .sas-blog-detail-container {
         padding: 40px;

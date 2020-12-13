@@ -60,6 +60,9 @@
             "category": {
                 "label": "Categories",
                 "placeholder": "Select blog's categories"
+            },
+            "warning": {
+                "maxTextCountReached": "There're {charLeft} character(s) left"
             }
         },
         "elements": {

@@ -1,0 +1,12 @@
+{% block sw_text_field %}
+    <div :class="{ 'has-warning': hasWarning, 'sas-text-field': true }">
+        {% parent() %}
+        {% block sas_text_field_max_length %}
+            <div v-if="maxLength" class="sas-text-field-counter-wrapper">
+                <span class="char-left-count" v-show="hasWarning">{{ $tc('sas-blog.detail.warning.maxTextCountReached', 0, { charLeft }) }}</span>
+                <span class="counter"><span class="current-counter">{{ currentLength }}</span> / {{ maxLength }}</span>
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}
+

@@ -1,0 +1,28 @@
+@import "~scss/variables";
+
+.sas-textarea-field {
+    .sw-field {
+        margin-bottom: 0;
+    }
+
+    &.has-warning {
+        .current-counter, .char-left-count {
+            color: $color-crimson-500;;
+        }
+    }
+
+    .sas-text-field-counter-wrapper {
+        text-align: justify-all;
+
+        .counter {
+            float: right;
+        }
+
+        .char-left-count {
+            float: left;
+            margin-top: 5px;
+            font-size: 12px;
+            line-height: 1.25;
+        }
+    }
+}

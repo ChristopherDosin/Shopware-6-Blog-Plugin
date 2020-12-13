@@ -6,6 +6,8 @@ import './component/editorjs';
  * Extensions
  */
 import './extension/sw-cms/component/sw-cms-sidebar';
+import './extension/component/form/sas-text-field';
+import './extension/component/form/sas-textarea-field';
 
 /**
  * Pages

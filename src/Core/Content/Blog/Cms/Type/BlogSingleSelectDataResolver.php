@@ -1,5 +1,4 @@
 <?php declare(strict_types=1);
-
 namespace Sas\BlogModule\Core\Content\Blog\Cms\Type;
 
 use Sas\BlogModule\Content\Blog\BlogEntriesDefinition;
@@ -46,5 +45,4 @@ class BlogSingleSelectDataResolver extends AbstractCmsElementResolver
     {
         $slot->setData($result->get('sas_blog_single_select')->first());
     }
-
 }

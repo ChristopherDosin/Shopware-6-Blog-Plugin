@@ -10,7 +10,7 @@ const { mapPropertyErrors } = Shopware.Component.getComponentHelper();
 Component.register('sas-blog-detail', {
     template,
 
-    inject: ['repositoryFactory'],
+    inject: ['repositoryFactory', 'systemConfigApiService'],
 
     mixins: [Mixin.getByName('notification')],
 
@@ -23,18 +23,16 @@ Component.register('sas-blog-detail', {
     data() {
         return {
             blog: null,
-            maxMetaTitleCharacters: 150,
-            remainMetaTitleCharactersText: "150 characters left.",
+            maximumMetaTitleCharacter: 160,
+            maximumMetaDescriptionCharacter: 160,
             configOptions: {},
             isLoading: true,
-            repository: null,
             processSuccess: false
         };
     },
 
     created() {
-        this.repository = this.repositoryFactory.create('sas_blog_entries');
-        this.getBlog();
+        this.createdComponent();
     },
 
     watch: {
@@ -51,6 +49,10 @@ Component.register('sas-blog-detail', {
     },
 
     computed: {
+        repository() {
+            return this.repositoryFactory.create('sas_blog_entries');
+        },
+
         mediaItem() {
             return this.blog !== null ? this.blog.media : null;
         },
@@ -63,29 +65,39 @@ Component.register('sas-blog-detail', {
     },
 
     methods: {
-        getBlog() {
+        async createdComponent() {
+            this.isLoading = true;
+
+            await Promise.all([
+                this.getPluginConfig(),
+                this.getBlog()
+            ]);
+
+            this.isLoading = false;
+        },
+
+        async getPluginConfig() {
+            const config = await this.systemConfigApiService.getValues('SasBlogModule.config');
+
+            this.maximumMetaTitleCharacter = config['SasBlogModule.config.maximumMetaTitleCharacter'];
+            this.maximumMetaDescriptionCharacter = config['SasBlogModule.config.maximumMetaDescriptionCharacter'];
+        },
+
+        async getBlog() {
             const criteria = new Criteria();
             criteria.addAssociation('blogCategories');
 
-            this.repository
+            return this.repository
                 .get(this.$route.params.id, Shopware.Context.api, criteria)
                 .then((entity) => {
                     this.blog = entity;
-                    this.isLoading = false;
+
+                    return Promise.resolve();
                 });
         },
 
-        changeLanguage() {
-            this.getBlog();
-        },
-
-        metaTitleCharCount() {
-            if(this.blog.metaTitle.length > this.maxMetaTitleCharacters){
-                this.remainMetaTitleCharactersText = "Exceeded "+this.maxMetaTitleCharacters+" characters limit.";
-            }else{
-                const remainCharacters = this.maxMetaTitleCharacters - this.blog.metaTitle.length;
-                this.remainMetaTitleCharactersText = `${remainCharacters} characters left.`;
-            }
+        async changeLanguage() {
+            await this.getBlog();
         },
 
         onClickSave() {

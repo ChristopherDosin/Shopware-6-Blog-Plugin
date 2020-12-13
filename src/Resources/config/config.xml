@@ -9,6 +9,26 @@
             <entity>cms_page</entity>
             <title>Choose a CMS page for the blog detail page</title>
         </component>
+
+    </card>
+
+    <card>
+        <title>Meta Configuration</title>
+        <title lang="de-DE">Metakonfiguration</title>
+
+        <input-field type="int">
+            <name>maximumMetaTitleCharacter</name>
+            <label>Maximum meta title characters</label>
+            <label lang="de-DE">Maximale Meta-Titelzeichen</label>
+            <defaultValue>160</defaultValue>
+        </input-field>
+
+        <input-field type="int">
+            <name>maximumMetaDescriptionCharacter</name>
+            <label>Maximum meta description characters</label>
+            <label lang="de-DE">Maximale Meta-Beschreibungszeichen</label>
+            <defaultValue>160</defaultValue>
+        </input-field>
     </card>
 
     <!--

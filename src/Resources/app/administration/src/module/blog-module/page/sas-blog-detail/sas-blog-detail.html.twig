@@ -29,21 +29,20 @@
                     <sw-card>
                         <sw-container columns="100%" gap="20px">
 
-                            <sw-text-field
+                            <sas-text-field
                                 v-model="blog.title"
                                 required
-                                style="margin-bottom: 0;"
                                 :placeholder="$tc('sas-blog.detail.titlePlaceholder')"
                                 :label="$tc('sas-blog.detail.titleLabel')"
                                 :error="blogTitleError">
-                            </sw-text-field>
+                            </sas-text-field>
 
-                            <sw-textarea-field type="textarea"
+                            <sas-textarea-field type="textarea"
                                 v-model="blog.teaser"
                                :error="blogTeaserError"
                                :placeholder="$tc('sas-blog.detail.teaserPlaceholder')"
                                 :label="$tc('sas-blog.detail.teaserLabel')">
-                            </sw-textarea-field>
+                            </sas-textarea-field>
 
                             <sw-upload-listener
                                 :uploadTag="blog.id"
@@ -112,15 +111,15 @@
                         :error="blogSlugError"
                         :label="$tc('sas-blog.detail.slugLable')">
                     </sw-text-field>
-                    <sw-card style="margin: 0">
-                        <h3 style="margin-bottom: 5px;">Visiblity</h3>
+                    <sw-card>
+                        <h3>Visiblity</h3>
                         <sw-switch-field style="margin-top: 0; margin-bottom: 0" type="switch" :label="$tc('sas-blog.detail.activeLable')" v-model="blog.active"></sw-switch-field>
                         <!--
                         <p style="color: #189eff">Add a specific release date.</p>
                         -->
                     </sw-card>
 
-                    <sw-card style="margin-top: 20px">
+                    <sw-card>
                         <sw-entity-single-select
                             class="sas-blog-author-base-form__salutation-select"
                             entity="sas_blog_author"
@@ -141,7 +140,7 @@
                     </sw-card>
 
 
-                    <sw-card style="margin-top: 20px;">
+                    <sw-card>
                         <sas-blog-category-tree-field
                             required
                             v-model="blog.blogCategories"
@@ -155,23 +154,25 @@
                         -->
                     </sw-card>
 
-                    <sw-card style="margin-top: 20px;">
-                        <h3 style="margin-bottom: 5px;">SERP Preview</h3>
+                    <sw-card class="serp-preview-card">
+                        <h3>SERP Preview</h3>
                         <div class="serp-preview">
                             <h3>{{ blog.metaTitle }}</h3>
                             <cite>{{ blog.slug }}</cite>
                             <p>{{ blog.metaDescription }}</p>
                         </div>
-                        <sw-text-field
+                        <sas-text-field
                             v-model="blog.metaTitle"
+                            :maxLength="maximumMetaTitleCharacter"
                             :placeholder="$tc('sas-blog.detail.serp.metaTitle')">
-                        </sw-text-field>
+                        </sas-text-field>
 
-                        <sw-textarea-field
+                        <sas-textarea-field
                             v-model="blog.metaDescription"
+                            :maxLength="maximumMetaDescriptionCharacter"
                             type="textarea"
                             :placeholder="$tc('sas-blog.detail.serp.metaDescription')">
-                        </sw-textarea-field>
+                        </sas-textarea-field>
                     </sw-card>
 
                     <!--
