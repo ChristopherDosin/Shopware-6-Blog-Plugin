@@ -27,3 +27,42 @@
     {{ $tc('sas-blog-tree-item.actions.edit') }}
 </sw-context-menu-item>
 {% endblock %}
+
+{% block sw_tree_items_actions_before %}
+    <sw-context-menu-item
+        :disabled="isParentDisabled || !allowNewCategories"
+        class="sw-tree-item__before-action"
+        @click="addElement(item, 'before');">
+        {{ $tc(`${translationContext}.general.actions.createBefore`) }}
+    </sw-context-menu-item>
+{% endblock %}
+
+{% block sw_tree_items_actions_after %}
+    <sw-context-menu-item
+        :disabled="isParentDisabled || !allowNewCategories"
+        class="sw-tree-item__after-action"
+        @click="addElement(item, 'after');">
+        {{ $tc(`${translationContext}.general.actions.createAfter`) }}
+    </sw-context-menu-item>
+{% endblock %}
+
+{% block sw_tree_items_actions_sub %}
+    <sw-context-menu-item
+        :disabled="isParentDisabled || !allowNewCategories"
+        class="sw-tree-item__sub-action"
+        @click="addSubElement(item); openTreeItem(true)">
+        {{ $tc(`${translationContext}.general.actions.createSub`) }}
+    </sw-context-menu-item>
+{% endblock %}
+
+{% block sw_tree_items_actions_delete %}
+    <sw-context-menu-item
+        class="sw-context-menu__group-button-delete"
+        :disabled="isParentDisabled || !allowDeleteCategories"
+        variant="danger"
+        @click="deleteElement(item)">
+        {{ $tc('global.default.delete') }}
+    </sw-context-menu-item>
+{% endblock %}
+
+
