@@ -120,7 +120,7 @@
             }
         },
         "modal": {
-            "textDeleteMultipleConfirm": "Are you sure you want to delete the \"{count}\" selected elements?"
+            "textDeleteMultipleConfirm": "Bist du sicher das du die ausgewählten Elemente \"{count}\" löschen möchtest?"
         }
     },
     "sas-blog-author": {
