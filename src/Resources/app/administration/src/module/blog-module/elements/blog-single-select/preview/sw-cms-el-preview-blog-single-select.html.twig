@@ -1,5 +1,10 @@
 {% block sw_cms_element_blog_single_select_preview %}
-    <div class="sw-cms-el-preview-blog">
-        <p>Select blog entry</p>
+    <div class="sw-cms-el-preview-blog-single-select">
+        <h6>{{ $tc('sas-blog.elements.single-select.previewText') }}</h6>
+        <img :src="'/administration/static/img/cms/preview_mountain_small.jpg' | asset">
+        <div class="sw-cms-el-category-placeholder-listing">
+            <div class="sw-cms-el-category-navigation__placeholder"></div>
+            <div class="sw-cms-el-category-navigation__placeholder"></div>
+        </div>
     </div>
 {% endblock %}

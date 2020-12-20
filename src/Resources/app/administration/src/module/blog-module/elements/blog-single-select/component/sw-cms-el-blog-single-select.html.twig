@@ -1,11 +1,8 @@
 {% block sas_cms_element_blog_single_select %}
     <div class="sas-cms-el-blog-single-select">
-        <img :src="thumbnail" />
-        <h2>Single Blog Entry</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Curabitur lobortis sem ante, et consequat nulla lacinia sit amet.
-            Pellentesque habitant morbi tristique senectus et netus et
-            malesuada fames ac turpis egestas.
-        </p>
+        <h6>{{ categoryName }}</h6>
+        <h3>{{ title }}</h3>
+        <img :src="articleImage" />
+        <p>{{ teaser }}</p>
     </div>
 {% endblock %}

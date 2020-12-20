@@ -13,13 +13,6 @@ Component.extend('sas-blog-tree-item', 'sw-tree-item', {
             }
             return parentNode;
         },
-        isDisabled() {
-            return false;
-        },
-
-        isParentDisabled() {
-            return this.currentEditElement !== null || this.disableContextMenu;
-        }
     },
 
     data() {

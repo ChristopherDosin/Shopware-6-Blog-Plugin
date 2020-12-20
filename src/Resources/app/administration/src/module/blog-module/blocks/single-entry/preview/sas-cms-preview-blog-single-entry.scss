@@ -1,0 +1,42 @@
+@import "~scss/variables";
+
+.sas-cms-preview-blog-single-entry {
+    width: 100%;
+    background: $color-white;
+    font-size: 22px;
+    color: $color-darkgray-200;
+    font-weight: 600;
+    border-radius: 5px;
+    padding: 20px;
+
+    h2 {
+        grid-column: span 2;
+        font-size: 16px;
+        line-height: 18px;
+        margin: 0 0 2px 0;
+    }
+
+    .sas-cms-preview-blog-single-entry-item {
+        width: 100%;
+
+        div > div {
+            margin: 10px 0;
+            height: 0.7em;
+            border-radius: 4px;
+            background-color: $color-gray-100;
+        }
+
+        hr {
+            max-width: 90%;
+            margin: 10px auto;
+            border: 1px solid $color-steam-cloud;
+        }
+
+        time {
+            font-size: 12px;
+            line-height: 14px;
+            font-weight: normal;
+            margin: 0 0 6px 0;
+        }
+    }
+}

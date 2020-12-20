@@ -101,7 +101,9 @@
                 }
             },
             "single-select": {
-                "label": "Select a blog entry"
+                "label": "Blog Single Select",
+                "selectFieldLabel": "Select a blog entry",
+                "previewText": "Lorem Ipsum Dolor"
             }
         },
         "blocks": {
@@ -113,6 +115,10 @@
                 "detail": {
                     "previewTitle": "Blog Detail View",
                     "label": "Blog Detail"
+                },
+                "singleEntry": {
+                    "previewTitle": "Single Blog Entry",
+                    "label": "Single Blog Entry"
                 }
             }
         }
@@ -145,9 +151,6 @@
                 "createBefore": "New category before",
                 "createAfter": "New category after"
             }
-        },
-        "modal": {
-            "textDeleteMultipleConfirm": "Are you sure you want to delete the \"{count}\" selected elements?"
         }
     },
     "sas-blog-author": {

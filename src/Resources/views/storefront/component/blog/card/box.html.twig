@@ -43,7 +43,7 @@
                                 </a>
                             {% endblock %}
                             {% block sas_blog_card_title_date %}
-                                <small>{{ article.createdAt|format_date('short', locale=app.request.locale)}}</small>
+                                <small>{{ article.createdAt|date("m. F Y") }}</small>
                             {% endblock %}
                         </h2>
                     {% endblock %}

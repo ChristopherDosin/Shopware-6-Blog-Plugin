@@ -26,6 +26,7 @@ import enGB from './snippet/en-GB.json';
  */
 import './blocks/listing';
 import './blocks/detail';
+import './blocks/single-entry';
 
 /**
  * CMS Elements
