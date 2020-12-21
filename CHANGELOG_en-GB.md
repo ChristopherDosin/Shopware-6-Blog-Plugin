@@ -1,3 +1,6 @@
+# 1.2.6
+* Improved single select CMS element & block
+
 #1.2.5
 * Adjusted date output in blog box template
 

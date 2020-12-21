@@ -1,3 +1,6 @@
+# 1.2.6
+* Single Select blog CMS Element & Block verbessert
+
 #1.2.5
 * Datumsausgabe im Blog Box Template angepasst
 
