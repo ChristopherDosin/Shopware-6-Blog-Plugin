@@ -12,6 +12,9 @@
                     "heading": "Fehler beim laden der Blog Detail Ansicht",
                     "content": "Vielleicht hast du das Blog Detail CMS Element auf derselben Seite wie das CMS Listing Element?"
                 }
+            },
+            "singleSelect": {
+                "emptyResult": "Es ist kein Blog Eintrag ausgewählt."
             }
         },
         "box": {

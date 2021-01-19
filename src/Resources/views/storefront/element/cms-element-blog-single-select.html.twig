@@ -1,6 +1,14 @@
 {% block sas_element_blog_single_select %}
     {% set article = element.data %}
 
-    {% sw_include '@Storefront/storefront/component/blog/card/box.html.twig' %}
+    {% if article|length %}
+        {% sw_include '@Storefront/storefront/component/blog/card/box.html.twig' %}
+    {% else %}
+        {% sw_include '@Storefront/storefront/utilities/alert.html.twig' with {
+            type: "primary",
+            content: "sas-blog.element.singleSelect.emptyResult"|trans|sw_sanitize,
+            icon: false
+            } %}
+    {% endif %}
 
 {% endblock %}

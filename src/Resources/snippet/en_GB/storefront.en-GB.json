@@ -12,6 +12,9 @@
                     "heading": "Error while loading the detail page",
                     "content": "There seems to be an issue while loading the blog detail page. Maybe you have the Blog detail CMS element within the same page as the Blog listing CMS element?"
                 }
+            },
+            "singleSelect": {
+                "emptyResult": "No blog entry was chosen"
             }
         },
         "box": {

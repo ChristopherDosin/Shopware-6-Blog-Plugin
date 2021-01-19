@@ -1,3 +1,6 @@
+# 1.2.12
+* fixed single select element if it's `null`
+
 # 1.2.11
 * Listing show author is optional, enabled or disabled by the plugin configuration
 * Added `sas_blog_card_footer` and `sas_blog_card_footer_author` twig block

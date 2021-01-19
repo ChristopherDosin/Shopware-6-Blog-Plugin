@@ -1,3 +1,6 @@
+# 1.2.12
+* fixed single select element if it's `null`
+
 # 1.2.11
 * Der Autor kann im Listing durch die Plugin Konfiguration aktiviert oder deaktiviert werden
 * Twig Block `sas_blog_card_footer` und `sas_blog_card_footer_author` hinzugefügt
