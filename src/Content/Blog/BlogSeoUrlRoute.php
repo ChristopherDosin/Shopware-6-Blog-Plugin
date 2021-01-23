@@ -27,12 +27,16 @@ class BlogSeoUrlRoute implements SeoUrlRouteInterface
         return new SeoUrlRouteConfig(
             $this->definition,
             self::ROUTE_NAME,
-            'Blog/{{ entry.title }}'
+            'blog/{{ entry.blogCategories.first.translated.name|lower }}/{{ entry.title|lower }}'
         );
     }
 
     public function prepareCriteria(Criteria $criteria): void
     {
+        $criteria->addAssociations([
+            'blogCategories',
+            'author'
+        ]);
     }
 
     public function getMapping(Entity $entry, ?SalesChannelEntity $salesChannel): SeoUrlMapping
@@ -48,5 +52,4 @@ class BlogSeoUrlRoute implements SeoUrlRouteInterface
                 'entry' => $entry,
             ]
         );
-    }
-}
+    }}

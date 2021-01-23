@@ -1,3 +1,6 @@
+# 1.2.13
+* Added category slug in seo url template
+
 # 1.2.12
 * fixed single select element if it's `null`
 

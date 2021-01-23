@@ -5,6 +5,7 @@ use Doctrine\DBAL\Connection;
 use Sas\BlogModule\Content\Blog\BlogEntriesDefinition;
 use Sas\BlogModule\Util\Lifecycle;
 use Sas\BlogModule\Util\Update;
+use Shopware\Core\Content\Seo\SeoUrlUpdater;
 use Shopware\Core\Framework\Context;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityRepositoryInterface;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Criteria;

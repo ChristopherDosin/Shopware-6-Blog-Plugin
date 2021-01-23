@@ -12,7 +12,7 @@ class BlogEntriesEntity extends Entity
     use EntityIdTrait;
 
     /**
-     * @var int
+     * @var bool
      */
     protected $active;
 
@@ -61,12 +61,12 @@ class BlogEntriesEntity extends Entity
         $this->author = $author;
     }
 
-    public function getActive(): int
+    public function getActive(): bool
     {
         return $this->active;
     }
 
-    public function setActive(int $active): void
+    public function setActive(bool $active): void
     {
         $this->active = $active;
     }
