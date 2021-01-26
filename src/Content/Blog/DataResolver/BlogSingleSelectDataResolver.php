@@ -43,7 +43,7 @@ class BlogSingleSelectDataResolver extends AbstractCmsElementResolver
 
     public function enrich(CmsSlotEntity $slot, ResolverContext $resolverContext, ElementDataCollection $result): void
     {
-        if(!is_null($result->get('sas_blog_single_select')->first())) {
+        if ($result->get('sas_blog_single_select')->first() !== null) {
             $slot->setData($result->get('sas_blog_single_select')->first());
         }
     }

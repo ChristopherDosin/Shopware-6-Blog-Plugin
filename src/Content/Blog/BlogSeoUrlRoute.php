@@ -35,7 +35,7 @@ class BlogSeoUrlRoute implements SeoUrlRouteInterface
     {
         $criteria->addAssociations([
             'blogCategories',
-            'author'
+            'author',
         ]);
     }
 
@@ -52,4 +52,5 @@ class BlogSeoUrlRoute implements SeoUrlRouteInterface
                 'entry' => $entry,
             ]
         );
-    }}
+    }
+}
