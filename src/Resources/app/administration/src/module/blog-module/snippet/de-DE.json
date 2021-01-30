@@ -32,6 +32,8 @@
             "editorCardTitle": "Dein Artikel",
             "editorLabel": "Blog Inhalt",
             "editorPlaceholder": "Starte deinen Blog Beitrag ...",
+            "createdAtLabel": "Erstellungsdatum",
+            "updatedAtLabel": "Aktualisierungs Datum",
             "visibility": {
                 "label": "Artikel aktiv"
             },

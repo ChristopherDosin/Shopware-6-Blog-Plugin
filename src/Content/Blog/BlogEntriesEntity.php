@@ -1,6 +1,7 @@
 <?php declare(strict_types=1);
 namespace Sas\BlogModule\Content\Blog;
 
+use DateTimeInterface;
 use Sas\BlogModule\Content\Blog\BlogTranslation\BlogTranslationCollection;
 use Sas\BlogModule\Content\BlogAuthor\BlogAuthorEntity;
 use Sas\BlogModule\Content\BlogCategory\BlogCategoryCollection;
@@ -40,6 +41,16 @@ class BlogEntriesEntity extends Entity
      * @var BlogAuthorEntity|null
      */
     protected $author;
+
+    /**
+     * @var DateTimeInterface
+     */
+    protected $createdAt;
+
+    /**
+     * @var DateTimeInterface
+     */
+    protected $updatedAt;
 
     public function getAuthorId(): string
     {
@@ -99,5 +110,37 @@ class BlogEntriesEntity extends Entity
     public function setBlogCategories(BlogCategoryCollection $blogCategories): void
     {
         $this->blogCategories = $blogCategories;
+    }
+
+    /**
+     * @return DateTimeInterface
+     */
+    public function getCreatedAt(): DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @param DateTimeInterface $createdAt
+     */
+    public function setCreatedAt(DateTimeInterface $createdAt): void
+    {
+        $this->createdAt = $createdAt;
+    }
+
+    /**
+     * @return DateTimeInterface
+     */
+    public function getUpdatedAt(): DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * @param DateTimeInterface $updatedAt
+     */
+    public function setUpdatedAt(DateTimeInterface $updatedAt): void
+    {
+        $this->updatedAt = $updatedAt;
     }
 }

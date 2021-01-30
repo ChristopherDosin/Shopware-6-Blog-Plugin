@@ -112,6 +112,30 @@
                         </sw-card>
                     {% endblock %}
 
+                    {% block sas_blog_detail_card_date %}
+                        <sw-card>
+                            {% block sas_blog_detail_field_created_at %}
+                                <sw-datepicker
+                                    size="medium"
+                                    dateType="date"
+                                    required
+                                    :label="$tc('sas-blog.detail.createdAtLabel')"
+                                    v-model="blog.createdAt">
+                                </sw-datepicker>
+                            {% endblock %}
+
+                            {% block sas_blog_detail_field_updated_at %}
+                                <sw-datepicker
+                                    size="medium"
+                                    dateType="date"
+                                    required
+                                    :label="$tc('sas-blog.detail.updatedAtLabel')"
+                                    v-model="blog.updatedAt">
+                                </sw-datepicker>
+                            {% endblock %}
+                        </sw-card>
+                    {% endblock %}
+
                     {% block sas_blog_detail_card_salutation %}
                         <sw-card>
                             {% block sas_blog_detail_field_salutation %}

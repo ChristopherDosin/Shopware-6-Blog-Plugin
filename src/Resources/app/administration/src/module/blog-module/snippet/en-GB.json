@@ -38,6 +38,8 @@
             "editorCardTitle": "Your article",
             "editorLabel": "Blog Content",
             "editorPlaceholder": "Start your blog post ...",
+            "createdAtLabel": "Created at",
+            "updatedAtLabel": "Updated at",
             "visibility": {
                 "label": "Article active"
             },
