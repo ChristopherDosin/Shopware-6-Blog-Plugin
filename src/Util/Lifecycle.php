@@ -18,9 +18,6 @@ class Lifecycle
      */
     private $cmsPageRepository;
 
-    /**
-     *
-     */
     public function __construct(
         SystemConfigService $systemConfig,
         EntityRepositoryInterface $cmsPageRepository

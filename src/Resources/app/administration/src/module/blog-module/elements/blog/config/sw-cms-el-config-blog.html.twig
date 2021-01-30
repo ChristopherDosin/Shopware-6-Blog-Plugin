@@ -2,13 +2,16 @@
 <div class="sw-cms-el-config-blog">
 
     {% block sas_cms_element_blog_listing_config_paginationCount_field %}
-        <sw-select-field
+        <sw-number-field
+            numberType="int"
+            :step="1"
+            :min="5"
+            :max="null"
             v-model="element.config.paginationCount.value"
+            :digits="2"
+            :allowEmpty="false"
             :label="$tc('sas-blog.elements.listing.config.paginationCount')">
-            <option value="5">5</option>
-            <option value="10">10</option>
-            <option value="15">15</option>
-        </sw-select-field>
+        </sw-number-field>
     {% endblock %}
 
     {% block sas_cms_element_blog_listing_config_show_type %}
