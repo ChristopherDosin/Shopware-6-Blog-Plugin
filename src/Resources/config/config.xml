@@ -10,7 +10,6 @@
             <title>Choose a CMS page for the blog detail page</title>
             <title lang="de-DE">Wähle eine CMS Seite für die Blog Detail Ansicht aus</title>
         </component>
-
     </card>
 
     <card>
@@ -41,6 +40,26 @@
             <label>Show author</label>
             <label lang="de-DE">Autor anzeigen</label>
             <defaultValue>1</defaultValue>
+        </input-field>
+
+    </card>
+
+    <card>
+        <title>Blog detail page configuration</title>
+        <title lang="de-DE">Blog Detailseite Konfiguration</title>
+
+        <input-field type="bool">
+            <name>detailPageShowAuthor</name>
+            <label>Show author</label>
+            <label lang="de-DE">Autor anzeigen</label>
+            <defaultValue>0</defaultValue>
+        </input-field>
+
+        <input-field type="bool">
+            <name>detailPageShowCategory</name>
+            <label>Show category</label>
+            <label lang="de-DE">Kategorie anzeigen</label>
+            <defaultValue>0</defaultValue>
         </input-field>
 
     </card>

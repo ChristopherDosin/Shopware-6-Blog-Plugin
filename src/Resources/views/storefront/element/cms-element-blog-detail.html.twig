@@ -48,7 +48,7 @@
                     {% block sas_blog_detail_article_meta %}
                         <div class="sas-blog-detail-article-meta">
                             {% block sas_blog_detail_article_meta_author %}
-                                {% if element.data.author %}
+                                {% if shopware.config.SasBlogModule.config.detailPageShowAuthor and element.data.author %}
                                     {% sw_include '@Storefront/storefront/component/blog/_partials/_block_author.html.twig' with {
                                         author: element.data.author
                                     } %}
@@ -56,7 +56,7 @@
                             {% endblock %}
 
                             {% block sas_blog_detail_article_meta_categories %}
-                                {% if element.data.blogCategories %}
+                                {% if shopware.config.SasBlogModule.config.detailPageShowCategory and element.data.blogCategories %}
                                     {% sw_include '@Storefront/storefront/component/blog/_partials/_block_category.html.twig' with {
                                         categories: element.data.blogCategories
                                     } %}
