@@ -17,6 +17,14 @@ Shopware.Service('cmsService').registerCmsElement({
             source: 'static',
             value: 'all'
         },
+        showCategoryFilter: {
+            source: 'static',
+            value: true
+        },
+        showAuthorFilter: {
+            source: 'static',
+            value: true
+        },
         blogCategories: {
             source: 'static',
             value: null,

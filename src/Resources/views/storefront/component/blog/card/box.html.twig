@@ -32,7 +32,7 @@
                 <div class="d-flex flex-column">
                     {% block sas_blog_card_title_date %}
                         <p class="mt-2 mb-1 d-flex align-items-center blog-date">
-                            <small>{{ article.createdAt|format_date('short', locale=app.request.locale) }}</small>
+                            <small>{{ article.publishedAt|format_date('short', locale=app.request.locale) }}</small>
                         </p>
                     {% endblock %}
                     {% block sas_blog_card_title %}

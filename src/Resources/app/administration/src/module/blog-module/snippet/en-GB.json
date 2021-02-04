@@ -38,8 +38,7 @@
             "editorCardTitle": "Your article",
             "editorLabel": "Blog Content",
             "editorPlaceholder": "Start your blog post ...",
-            "createdAtLabel": "Created at",
-            "updatedAtLabel": "Updated at",
+            "publishedAtLabel": "Published at",
             "visibility": {
                 "label": "Article active"
             },
@@ -79,6 +78,17 @@
             "listing": {
                 "config": {
                     "paginationCount": "Pagination count",
+                    "showFilter": {
+                        "label": "Listing filter",
+                        "options": {
+                            "all": "All",
+                            "select": "Select filter",
+                            "filter": {
+                                "category": "Show Category filter",
+                                "author": "Show Author filter"
+                            }
+                        }
+                    },
                     "showType": {
                         "label": "Show type",
                         "options": {
@@ -97,6 +107,13 @@
                 }
             },
             "detail": {
+                "config": {
+                    "showMeta": {
+                        "label": "Detail view meta information",
+                        "showAuthor": "Show author",
+                        "showCategory": "Show category"
+                    }
+                },
                 "component": {
                     "elementHeadline": "Blog detail element",
                     "infoText": "The blog detail content will be automatically fetched by the element. There's currently no configuration available."

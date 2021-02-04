@@ -18,14 +18,16 @@
 
     {% block sas_element_blog_listing_wrapper %}
         {% block sas_block_filter_panel %}
-            <div id="filter-panel-wrapper"
-                 class="filter-panel-wrapper"
-                 data-offcanvas-filter-content="true">
-                {% sw_include '@Storefront/storefront/component/listing/blog-filter-panel.html.twig' with {
-                    listing: searchResult,
-                    sidebar: false
-                } %}
-            </div>
+            {% if config.showCategoryFilter.value or config.showAuthorFilter.value %}
+                <div id="filter-panel-wrapper"
+                     class="filter-panel-wrapper"
+                     data-offcanvas-filter-content="true">
+                    {% sw_include '@Storefront/storefront/component/listing/blog-filter-panel.html.twig' with {
+                        listing: searchResult,
+                        sidebar: false
+                    } %}
+                </div>
+            {% endif %}
         {% endblock %}
 
         {% sw_include '@Storefront/storefront/component/blog/listing.html.twig' with {

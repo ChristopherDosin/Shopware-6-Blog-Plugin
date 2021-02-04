@@ -9,6 +9,7 @@ use Shopware\Core\Content\Media\MediaDefinition;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityDefinition;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\BoolField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\CreatedAtField;
+use Shopware\Core\Framework\DataAbstractionLayer\Field\DateField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\FkField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\CascadeDelete;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\PrimaryKey;
@@ -26,29 +27,26 @@ class BlogEntriesDefinition extends EntityDefinition
 {
     public const ENTITY_NAME = 'sas_blog_entries';
 
-    /**
-     */
     public function getEntityName(): string
     {
         return self::ENTITY_NAME;
     }
 
-    /**
-     */
     public function getEntityClass(): string
     {
         return BlogEntriesEntity::class;
     }
 
-    /**
-     */
     public function getCollectionClass(): string
     {
         return BlogEntriesCollection::class;
     }
 
-    /**
-     */
+    public function getDefaults(): array
+    {
+        return ['publishedAt' => new \DateTime()];
+    }
+
     protected function defineFields(): FieldCollection
     {
         return new FieldCollection([
@@ -67,8 +65,7 @@ class BlogEntriesDefinition extends EntityDefinition
             new TranslatedField('metaDescription'),
             new TranslatedField('content'),
 
-            new UpdatedAtField(),
-            new CreatedAtField(),
+            (new DateField('published_at', 'publishedAt'))->addFlags(new Required()),
 
             (new TranslationsAssociationField(BlogTranslationDefinition::class, 'sas_blog_entries_id'))->addFlags(new Required()),
 

@@ -21,14 +21,14 @@
                     {% block sas_blog_detail_article_teaser_image %}
                         {% if element.data.detailTeaserImage %}
                             {% set attributes = {
-                                'class': 'blog-image-teaser card-img-top',
+                                'class': 'blog-image-teaser card-img-top mb-3',
                                 'alt': (element.data.media.translated.alt ?: element.data.media.fileName),
                                 'title': (element.data.media.translated.title ?: element.data.media.fileName)
                             } %}
 
                             {% sw_thumbnails 'blog-image-teaser' with {
-                                media: element.data.media,
-                                sizes: {
+                                    media: element.data.media,
+                                    sizes: {
                                     'xs': '501px',
                                     'sm': '315px',
                                     'md': '427px',
@@ -46,28 +46,30 @@
                     {% endblock %}
 
                     {% block sas_blog_detail_article_meta %}
-                        <div class="sas-blog-detail-article-meta">
-                            {% block sas_blog_detail_article_meta_author %}
-                                {% if shopware.config.SasBlogModule.config.detailPageShowAuthor and element.data.author %}
-                                    {% sw_include '@Storefront/storefront/component/blog/_partials/_block_author.html.twig' with {
-                                        author: element.data.author
-                                    } %}
-                                {% endif %}
-                            {% endblock %}
+                        {% if element.fieldconfig.elements.showAuthor.value or element.fieldconfig.elements.showCategory.value %}
+                            <div class="sas-blog-detail-article-meta">
+                                {% block sas_blog_detail_article_meta_author %}
+                                    {% if element.fieldconfig.elements.showAuthor.value and element.data.author %}
+                                        {% sw_include '@Storefront/storefront/component/blog/_partials/_block_author.html.twig' with {
+                                            author: element.data.author
+                                        } %}
+                                    {% endif %}
+                                {% endblock %}
 
-                            {% block sas_blog_detail_article_meta_categories %}
-                                {% if shopware.config.SasBlogModule.config.detailPageShowCategory and element.data.blogCategories %}
-                                    {% sw_include '@Storefront/storefront/component/blog/_partials/_block_category.html.twig' with {
-                                        categories: element.data.blogCategories
-                                    } %}
-                                {% endif %}
-                            {% endblock %}
-                        </div>
+                                {% block sas_blog_detail_article_meta_categories %}
+                                    {% if element.fieldconfig.elements.showCategory.value and element.data.blogCategories %}
+                                        {% sw_include '@Storefront/storefront/component/blog/_partials/_block_category.html.twig' with {
+                                            categories: element.data.blogCategories
+                                        } %}
+                                    {% endif %}
+                                {% endblock %}
+                            </div>
+                        {% endif %}
                     {% endblock %}
 
                     {% block sas_blog_detail_article_blocks_content %}
                         <div>
-                            {{ element.data.content|raw }}
+                            {{ element.data.translated.content|raw }}
                         </div>
                     {% endblock %}
                 </div>

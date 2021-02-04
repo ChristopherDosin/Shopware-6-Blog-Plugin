@@ -4,16 +4,31 @@
             <h2 v-html="blog ? blog.title : 'blog'"></h2>
         </template>
 
-        <template #language-switch>
-            <sw-language-switch
-                @on-change="changeLanguage"
-                :disabled="blog._isNew"
-                v-if="blog">
-            </sw-language-switch>
-        </template>
+        {% block sas_blog_detail_smart_bar %}
+            <template slot="smart-bar-back">
+                <router-link class="smart-bar__back-btn"
+                             :to="backPath"
+                             :style="{ 'color': moduleData.color }">
+                    <sw-icon name="default-arrow-head-left" small></sw-icon>
+                    <sw-icon :name="moduleData.icon" v-if="moduleData && moduleData.icon" small></sw-icon>
+                </router-link>
+            </template>
+        {% endblock %}
+
+        {% block sas_blog_detail_language_switch %}
+            <template #language-switch>
+                <sw-language-switch
+                    @on-change="changeLanguage"
+                    :disabled="blog._isNew"
+                    v-if="blog">
+                </sw-language-switch>
+            </template>
+        {% endblock %}
+
 
         {% block sas_blog_detail_smart_bar_actions %}
             <template #smart-bar-actions>
+
                 {% block sas_blog_list_smart_bar_actions_about %}
                     <sw-button :disabled="blog && blog.isLoading" @click="onCancel">
                         {{ $tc('sas-blog.detail.buttonCancel') }}
@@ -114,23 +129,13 @@
 
                     {% block sas_blog_detail_card_date %}
                         <sw-card>
-                            {% block sas_blog_detail_field_created_at %}
+                            {% block sas_blog_detail_field_published_at %}
                                 <sw-datepicker
                                     size="medium"
                                     dateType="date"
                                     required
-                                    :label="$tc('sas-blog.detail.createdAtLabel')"
-                                    v-model="blog.createdAt">
-                                </sw-datepicker>
-                            {% endblock %}
-
-                            {% block sas_blog_detail_field_updated_at %}
-                                <sw-datepicker
-                                    size="medium"
-                                    dateType="date"
-                                    required
-                                    :label="$tc('sas-blog.detail.updatedAtLabel')"
-                                    v-model="blog.updatedAt">
+                                    :label="$tc('sas-blog.detail.publishedAtLabel')"
+                                    v-model="blog.publishedAt">
                                 </sw-datepicker>
                             {% endblock %}
                         </sw-card>

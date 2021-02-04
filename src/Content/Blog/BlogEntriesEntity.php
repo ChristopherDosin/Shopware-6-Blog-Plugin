@@ -45,12 +45,7 @@ class BlogEntriesEntity extends Entity
     /**
      * @var DateTimeInterface
      */
-    protected $createdAt;
-
-    /**
-     * @var DateTimeInterface
-     */
-    protected $updatedAt;
+    protected $publishedAt;
 
     public function getAuthorId(): string
     {
@@ -115,32 +110,17 @@ class BlogEntriesEntity extends Entity
     /**
      * @return DateTimeInterface
      */
-    public function getCreatedAt(): DateTimeInterface
+    public function getPublishedAt(): DateTimeInterface
     {
-        return $this->createdAt;
+        return $this->publishedAt;
     }
 
     /**
-     * @param DateTimeInterface $createdAt
+     * @param DateTimeInterface $publishedAt
      */
-    public function setCreatedAt(DateTimeInterface $createdAt): void
+    public function setPublishedAt(DateTimeInterface $publishedAt): void
     {
-        $this->createdAt = $createdAt;
+        $this->publishedAt = $publishedAt;
     }
 
-    /**
-     * @return DateTimeInterface
-     */
-    public function getUpdatedAt(): DateTimeInterface
-    {
-        return $this->updatedAt;
-    }
-
-    /**
-     * @param DateTimeInterface $updatedAt
-     */
-    public function setUpdatedAt(DateTimeInterface $updatedAt): void
-    {
-        $this->updatedAt = $updatedAt;
-    }
 }

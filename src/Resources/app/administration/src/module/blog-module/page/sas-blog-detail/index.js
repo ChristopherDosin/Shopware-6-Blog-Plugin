@@ -28,7 +28,8 @@ Component.register('sas-blog-detail', {
             configOptions: {},
             isLoading: true,
             processSuccess: false,
-            fileAccept: 'image/*'
+            fileAccept: 'image/*',
+            moduleData: this.$route.meta.$module
         };
     },
 
@@ -62,7 +63,29 @@ Component.register('sas-blog-detail', {
             return this.repositoryFactory.create('media');
         },
 
-        ...mapPropertyErrors('blog', ['title', 'slug', 'teaser', 'authorId'])
+        backPath() {
+            if (this.$route.query.ids && this.$route.query.ids.length > 0) {
+                return {
+                    name: 'blog.module.index',
+                    query: {
+                        ids: this.$route.query.ids,
+                        limit: this.$route.query.limit,
+                        page: this.$route.query.page
+                    }
+                };
+            }
+            return { name: 'blog.module.index' };
+        },
+
+        ...mapPropertyErrors(
+            'blog', [
+                'title',
+                'slug',
+                'teaser',
+                'authorId',
+                'publishedAt'
+            ]
+        )
     },
 
     methods: {

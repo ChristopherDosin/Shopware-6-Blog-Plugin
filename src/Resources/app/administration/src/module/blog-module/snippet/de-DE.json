@@ -32,8 +32,7 @@
             "editorCardTitle": "Dein Artikel",
             "editorLabel": "Blog Inhalt",
             "editorPlaceholder": "Starte deinen Blog Beitrag ...",
-            "createdAtLabel": "Erstellungsdatum",
-            "updatedAtLabel": "Aktualisierungs Datum",
+            "publishedAtLabel": "Erstellungsdatum",
             "visibility": {
                 "label": "Artikel aktiv"
             },
@@ -69,7 +68,29 @@
         "elements": {
             "listing": {
                 "config": {
-                    "paginationCount": "Pagination count"
+                    "paginationCount": "Pagination count",
+                    "showFilter": {
+                        "label": "Zeige Filter",
+                        "options": {
+                            "all": "Alle",
+                            "select": "Filter auswählen",
+                            "filter": {
+                                "category": "Zeige Kategorie Filter",
+                                "author": "Zeige Autor Filter"
+                            }
+                        }
+                    },
+                    "showType": {
+                        "label": "Anzeigetyp",
+                        "options": {
+                            "all": "Alle",
+                            "select": "Kategorien auswählen"
+                        }
+                    },
+                    "blogCategories": {
+                        "label": "Kategorien",
+                        "placeholder": "Kategorien auswählen"
+                    }
                 },
                 "component": {
                     "elementHeadline": "Blog Listen Element",
@@ -77,6 +98,13 @@
                 }
             },
             "detail": {
+                "config": {
+                    "showMeta": {
+                        "label": "Detail Ansicht Meta Informationen",
+                        "showAuthor": "Zeige Autor",
+                        "showCategory": "Zeige Kategorie"
+                    }
+                },
                 "component": {
                     "elementHeadline": "Blog Detail Element",
                     "infoText": "Der Blog Inhalt wird automatisch in der Storefront ausgespielt. Derzeit gibt es keine Element Konfiguration."

@@ -1,7 +1,7 @@
 {% block block_sas_blog_detail %}
     {% set element = block.slots.getSlot('blogDetail') %}
 
-    <div class="col-12" data-cms-element-id="{{ element.id }}">
+    <div class="col-md-8 offset-md-2" data-cms-element-id="{{ element.id }}">
         {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
     </div>
 

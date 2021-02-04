@@ -14,6 +14,7 @@ use Shopware\Core\Framework\DataAbstractionLayer\Search\Aggregation\Metric\Entit
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Filter\EqualsAnyFilter;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Filter\EqualsFilter;
+use Shopware\Core\Framework\DataAbstractionLayer\Search\Filter\RangeFilter;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Sorting\FieldSorting;
 use Shopware\Core\System\SalesChannel\SalesChannelContext;
 use Symfony\Component\HttpFoundation\Request;
@@ -30,15 +31,25 @@ class BlogCmsElementResolver extends AbstractCmsElementResolver
         /* get the config from the element */
         $config = $slot->getFieldConfig();
 
+        $dateTime = (new \DateTime());
+
         $criteria = new Criteria();
 
         $criteria->addFilter(
-            new EqualsFilter('active', true)
+            new EqualsFilter('active', true),
+            new RangeFilter('publishedAt', [RangeFilter::LTE => $dateTime->format(DATE_ATOM)])
         );
 
-        $criteria->addAssociations(['author', 'author.media', 'author.blogs', 'blogCategories']);
+        $criteria->addAssociations([
+            'author',
+            'author.media',
+            'author.blogs',
+            'blogCategories'
+        ]);
 
-        $criteria->addSorting(new FieldSorting('createdAt', FieldSorting::DESCENDING));
+        $criteria->addSorting(
+            new FieldSorting('publishedAt', FieldSorting::DESCENDING)
+        );
 
         if ($config->has('showType') && $config->get('showType')->getValue() === 'select') {
             $blogCategories = $config->get('blogCategories') ? $config->get('blogCategories')->getValue() : [];
