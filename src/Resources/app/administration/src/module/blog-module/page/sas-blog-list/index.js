@@ -86,6 +86,8 @@ Component.register('sas-blog-list', {
             criteria.addAssociation('author');
             criteria.addAssociation('blogCategories');
 
+            criteria.addSorting(Criteria.sort('publishedAt', 'DESC', false))
+
             if (this.categoryId) {
                 criteria.addFilter(Criteria.equals('blogCategories.id', this.categoryId));
             }
