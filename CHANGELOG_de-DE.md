@@ -1,9 +1,12 @@
+# 1.3.1
+* Added DESC sorting to admin blog listing
+
 # 1.3.0
 * Added enable/disable filter for author & category to the blog listing element
 * Added enable/disable filter for author & category to the blog detail element
 * Added a new `publishedAt` date field for a blog entry
 * Added back button to blog detail page
-* Centered blog detail post with `col-md-8 offset-md-2`
+* Centered blog detail post with `col-md-8 offset-md-2`_
 
 # 1.2.13
 * Added category slug in seo url template

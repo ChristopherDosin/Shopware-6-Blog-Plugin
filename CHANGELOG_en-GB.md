@@ -1,3 +1,6 @@
+# 1.3.1
+* Added DESC sorting to admin blog listing
+
 # 1.3.0
 * Added enable/disable filter for author & category to the blog listing element
 * Added enable/disable filter for author & category to the blog detail element
