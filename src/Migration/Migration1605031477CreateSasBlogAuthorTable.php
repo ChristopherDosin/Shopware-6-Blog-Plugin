@@ -55,7 +55,7 @@ class Migration1605031477CreateSasBlogAuthorTable extends MigrationStep
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
         ');
 
-        $notSpecified = $connection->fetchOne("SELECT id from salutation WHERE salutation_key = 'not_specified' LIMIT 1");
+        $notSpecified = $connection->fetchOne("SELECT id from salutation LIMIT 1");
 
         $defaultAuthorId = $connection->fetchOne('SELECT id from sas_blog_author LIMIT 1');
 
